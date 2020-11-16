@@ -8,7 +8,7 @@ import 'category.dart';
 void main() {
   runApp(MyApp());
 }
-//abc
+
 class MyApp extends StatefulWidget {
 
   static void setLocale(BuildContext context, Locale locale){
