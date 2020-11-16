@@ -14,30 +14,22 @@ class PatientLogin extends StatefulWidget {
 class _PatientLoginState extends State<PatientLogin> {
   @override
   Widget build(BuildContext context) {
+     Size size = MediaQuery.of(context).size;
     return SafeArea(
           child: Scaffold(
-            backgroundColor:Theme.of(context).primaryColor,
+          backgroundColor:Theme.of(context).primaryColor,
 
         body: Column(
 
                 children:[
                     Container(
                   
-                      height: 150,
+                      height: (size.height * 2.5)/10,
                       color: Theme.of(context).primaryColor,
                       child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  
-                                  margin: EdgeInsets.only(
-                                   
-                                   
-                                    right: 20,
-                                    
-                                  ),
-                                 
-                                
+                                Center(
                                   child: Text(DemoLocalization.of(context).getTranslatedValue('p'),
                                       style: 
                                         GoogleFonts.rajdhani(
@@ -45,7 +37,7 @@ class _PatientLoginState extends State<PatientLogin> {
                                             fontSize: 50,
                                             color: Colors.white),
                                       ),
-                                    ), 
+                                ), 
                                 Container(
                                   margin: EdgeInsets.only(
                                     
@@ -59,7 +51,7 @@ class _PatientLoginState extends State<PatientLogin> {
 
               Expanded(
                         child: Container(
-                      
+                        height: (size.height * 7)/10,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -69,15 +61,20 @@ class _PatientLoginState extends State<PatientLogin> {
                         ),
                     child: Padding(
                               padding: 
-                                        const EdgeInsets.symmetric(
+                              const EdgeInsets.symmetric(
                                           vertical: 30.0,
                                           
                                        
                                         ),
-                              child: ListView(
+                                       
+                          
+                            child: ListView(
                             children: [
                               Container(
-                                    margin: EdgeInsets.all(20),
+                                    height: size.height/ 15,
+                                    margin: EdgeInsets.symmetric(
+                                                vertical:size.height/35,
+                                                ),
                                 
                                     child: Center(
                                       child: Text(DemoLocalization.of(context).getTranslatedValue('ltc'),
@@ -91,51 +88,118 @@ class _PatientLoginState extends State<PatientLogin> {
                                     ),
                                       ),
 
-                                      Container(
-                                      
-                                        width: double.infinity,
+                                     
+                                    FittedBox(
+                                    
+                                    fit: BoxFit.contain,
+                
                                         child: Row(
                                           children:[
                                             Container(
-                                                          
-                                                    width: 200,
+                                               
+                                                    margin: EdgeInsets.only(
+                                                      left:20,
+                                                      right: 10,
+                                                      bottom: 10,
+      
+                                                    ),      
+                                                    width: size.width/2,
                                                     decoration: BoxDecoration(
                                                           color: Colors.transparent,
                                                           borderRadius: BorderRadius.circular(50),
                                                           ),
-                                                        child:SignInButton(
-                                                            
-                                                            Buttons.Google,
-                                                            
-                                                            text: DemoLocalization.of(context).getTranslatedValue('gmailtext'),
-                                                            
-                                                            onPressed: () {},
-                                                            
+                                                        child: FittedBox(
+                                                          fit: BoxFit.contain,
+                                                          child: SignInButton(
+                                                              
+                                                              Buttons.Google,
+                                                              
+                                                              text: DemoLocalization.of(context).getTranslatedValue('gmailtext'),
+                                                              
+                                                              onPressed: () {},
+                                                              
                                               ),
+                                                        ),
                                                 ),
 
                                     Container(
-                                                          
-                                                    width: 200,
+                                                   
+                                                     margin: EdgeInsets.only(
+                                                       
+                                                       left: 10,
+                                                      right:20,
+                                                      bottom: 10,
+                                                    ),     
+                                                    width: size.width/2,
                                                     decoration: BoxDecoration(
                                                           color: Colors.transparent,
                                                           borderRadius: BorderRadius.circular(50),
                                                           ),
-                                                        child:SignInButton(
-                                                            
-                                                            Buttons.FacebookNew, 
-                                                            text: DemoLocalization.of(context).getTranslatedValue('fbtext'),
-                                                            onPressed: () {},
-                                                            
+                                                        child:FittedBox(
+                                                            fit: BoxFit.contain,
+                                                                                                                  child: SignInButton(
+                                                              
+                                                              Buttons.FacebookNew, 
+                                                              text: DemoLocalization.of(context).getTranslatedValue('fbtext'),
+                                                              onPressed: () {},
+                                                              
                                                     ),
+                                                        ),
                                                 ),
                                           ],
                                         ),
                                       ),
 
-                                      Container(
-                                      margin: EdgeInsets.all(10),
-                                              padding: EdgeInsets.all(8),
+                                      Padding(
+                                          padding: EdgeInsets.symmetric(
+                                          horizontal: size.width/9
+                                    ) ,
+                                        child: Container(
+                                               margin: EdgeInsets.symmetric(
+                                                vertical:size.height/40,
+                                                ),
+                                                padding: EdgeInsets.all(4),
+                                                width: 300,
+                                                decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                        color: Color(0xFFBC7C7C7),
+                                                        width: 2,
+                                                      ),
+                                                borderRadius: BorderRadius.circular(60),
+                                                        ),
+                                                    child: Row(
+                                                      children:[
+                                                        
+                                                        Container(
+                                                          width: 60,
+                                                          child: Icon(Icons.account_circle,
+                                                          size: 25,
+                                                          color: Color(0xFFBB9B9B9),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: TextField(
+                                                            decoration: InputDecoration(
+                                                              hintText: DemoLocalization.of(context).getTranslatedValue('euser'),
+                                                              border: InputBorder.none,
+                                                              contentPadding: EdgeInsets.all(10),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                      ),
+
+                                      Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: size.width/9
+                                              ) ,
+                                              child: Container(
+                                              margin: EdgeInsets.symmetric(
+                                                vertical:size.height/40,
+                                                ),
+                                              padding: EdgeInsets.all(4),
                                               width: 300,
                                               decoration: BoxDecoration(
                                                     border: Border.all(
@@ -148,7 +212,7 @@ class _PatientLoginState extends State<PatientLogin> {
                                                     children:[
                                                       Container(
                                                         width: 60,
-                                                        child: Icon(Icons.account_circle,
+                                                        child: Icon(Icons.vpn_key,
                                                         size: 25,
                                                         color: Color(0xFFBB9B9B9),
                                                         ),
@@ -156,7 +220,7 @@ class _PatientLoginState extends State<PatientLogin> {
                                                       Expanded(
                                                         child: TextField(
                                                           decoration: InputDecoration(
-                                                            hintText: DemoLocalization.of(context).getTranslatedValue('euser'),
+                                                            hintText: DemoLocalization.of(context).getTranslatedValue('epass'),
                                                             border: InputBorder.none,
                                                             contentPadding: EdgeInsets.all(10),
                                                             ),
@@ -164,117 +228,91 @@ class _PatientLoginState extends State<PatientLogin> {
                                                         ),
                                                     ],
                                                   ),
-                                                ),
-
-                                      Container(
-                                            margin: EdgeInsets.all(10),
-                                            padding: EdgeInsets.all(8),
-                                            width: 300,
-                                            decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                    color: Color(0xFFBC7C7C7),
-                                                    width: 2,
-                                                  ),
-                                            borderRadius: BorderRadius.circular(60),
-                                                    ),
-                                                child: Row(
-                                                  children:[
-                                                    Container(
-                                                      width: 60,
-                                                      child: Icon(Icons.vpn_key,
-                                                      size: 25,
-                                                      color: Color(0xFFBB9B9B9),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: TextField(
-                                                        decoration: InputDecoration(
-                                                          hintText: DemoLocalization.of(context).getTranslatedValue('epass'),
-                                                          border: InputBorder.none,
-                                                          contentPadding: EdgeInsets.all(10),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                  ],
-                                                ),
-                                      ),
-
-                                      Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 120.0,
-                                          ),
-                                          child: Container(
-                                        margin: EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 10,
                                         ),
-                                                
-                                                width: 100,
-                                                decoration: BoxDecoration(
-                                                      color: Theme.of(context).primaryColor,
-                                                      borderRadius: BorderRadius.circular(80),
-                                                      ),
-                                        child: FlatButton(
-                                                  splashColor: Colors.transparent,  
-                                                  highlightColor: Colors.transparent,
-                                                  child: Text(DemoLocalization.of(context).getTranslatedValue('signin'),
-                                                  style:  GoogleFonts.rajdhani(
-                                                          fontWeight:FontWeight.bold,
-                                                          fontSize: 20,
-                                                          color: Colors.white),
-                                                      ),
-                                                    
+                                      ),
+
+                FittedBox(
+                                    fit: BoxFit.contain,
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical: size.height/40,
+                                      ),
+                                      child: Row(
+                                      children: [
+                                      Container(
+                                      margin: EdgeInsets.only(
+                                        
+                                      
+                                        left: 20,
+                                        
+                                      ),
+                                              
+                                      width: (size.width)/3,
+                                      decoration: BoxDecoration(
+                                            color: Theme.of(context).primaryColor,
+                                            borderRadius: BorderRadius.circular(80),
+                                                    ),
+                                      child: FlatButton(
+                                                splashColor: Colors.transparent,  
+                                                highlightColor: Colors.transparent,
+                                                child: Text(DemoLocalization.of(context).getTranslatedValue('signin'),
+                                                style:  GoogleFonts.rajdhani(
+                                                        fontWeight:FontWeight.bold,
+                                                        fontSize: 18,
+                                                        color: Colors.white),
+                                                    ),
+                                                  
+                                        
+                                                onPressed: ()
+                                                  {
+                                                       Navigator.push(context,
+                                                        MaterialPageRoute(builder: (context)=>
+                                                      PatientDashboard()),
+                                                      ); 
+                                                }
+
+                                ),
+                                                  ),
+
+                                  Container(
+                                      margin: EdgeInsets.only(
+                                        
+                                        left: 10,
+                                        right: 20,
+                                        ),
                                           
-                                          onPressed: ()
-                                            {
-                                                Navigator.push(context,
-                                                MaterialPageRoute(builder: (context)=>
-                                                PatientDashboard()),
-                                                );        
-                                          }
+                                          width: ((size.width)*1.5)/3,
+                                          decoration: BoxDecoration(
+                                                color: Theme.of(context).primaryColor,
+                                                borderRadius: BorderRadius.circular(80),
+                                                ),
+                                      child: FlatButton(
+                                            splashColor: Colors.transparent,  
+                                            highlightColor: Colors.transparent,
+                                            child: Text(DemoLocalization.of(context).getTranslatedValue('newmember'),
+                                            style:  GoogleFonts.rajdhani(
+                                                    fontWeight:FontWeight.bold,
+                                                    fontSize: 18,
+                                                    color: Colors.white),
+                                                ),
+                                              
+                                        
+                                              onPressed: ()
+                                                {
+                                                    Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context)=>
+                                                    PatientSignup()),
+                                                      );        
+                                                  }
 
-                                    ),
-                                  ),
-                                      ),
 
-                                  Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 100,
-                                      ),
-                                      child: Container(
-                                        width: 100,
-                                        margin: EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 10,
-                                          ),
-                                                
-                                                           
-                                                decoration: BoxDecoration(
-                                                     color: Theme.of(context).primaryColor, 
-                                                      borderRadius: BorderRadius.circular(50),
-                                                      ),
-                                                  child: FlatButton(
-                                                  splashColor: Colors.transparent,  
-                                                  highlightColor: Colors.transparent,
-                                                  child: Text(DemoLocalization.of(context).getTranslatedValue('newmember'),
-                                                  style:  GoogleFonts.rajdhani(
-                                                          fontWeight:FontWeight.bold,
-                                                          fontSize: 20,
-                                                          color: Colors.white),
-                                                      ),
-                                                    
-                                          
-                                          onPressed: ()
-                                            {
-                                                Navigator.push(context,
-                                                MaterialPageRoute(builder: (context)=>
-                                                PatientSignup()),
-                                                );        
-                                          }
-
+                                              ),
+                                        ),
+                                        
+                                        ],
                                       ),
                                     ),
-                                  ),
+                                   ),
                         
                         ],
                       ),

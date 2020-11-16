@@ -70,13 +70,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
-      child: Container(
+      child: SingleChildScrollView(
+              child: Container(
+        height: size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: 230,
+              height: size.height * 0.33,
               color: Theme.of(context).primaryColor,
               child: Column(
                 children: [
@@ -121,14 +124,17 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             Container(
-              height: 250,
+              height: size.height * 0.33,
               width: double.infinity,
               child: new Image.asset('assets/images/doc.jpg'),
             ),
             Container(
-              margin: EdgeInsets.all(20),
+              
+              margin: EdgeInsets.only(
+           
+              bottom:size.height/14),
               padding: EdgeInsets.all(8),
-              width: 270,
+              width: size.width/1.5,
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(80),
@@ -152,6 +158,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ],
         ),
+          ),
       ),
     );
   }

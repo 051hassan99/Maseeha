@@ -14,167 +14,178 @@ class Category extends StatefulWidget {
 class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
+     Size size = MediaQuery.of(context).size;
     return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            DefaultTextStyle(
-              child: Container(
-                height: 300,
-                color: Theme.of(context).primaryColor,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            right: 15,
-                          ),
-                          child: LangSelector(),
+          child: Scaffold(
+          backgroundColor:Theme.of(context).primaryColor,
+
+        body: Column(
+
+                children:[
+                    Container(
+                  
+                      height: (size.height * 3)/10,
+                      color: Theme.of(context).primaryColor,
+                      child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Center(
+                                  child: Text(DemoLocalization.of(context).getTranslatedValue('title'),
+                                      style: 
+                                        GoogleFonts.rajdhani(
+                                            fontWeight:FontWeight.bold,
+                                            fontSize: 50,
+                                            color: Colors.white),
+                                      ),
+                                ), 
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    
+                                    right: 10,
+                                    bottom: 80,
+                                    ),
+                                  child: LangSelector()),
+                              ],
                         ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
+              ),
+
+              Expanded(
+                        child: Container(
+                          height: (size.height *7)/10,
+                      
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(50.0),
+                            topRight: Radius.circular(50.0),
+                          )
+                        ),
+                    child: Padding(
+                              padding: 
+                              const EdgeInsets.symmetric(
+                                          vertical: 30.0,
+                                          
+                                       
+                                        ),
+                  child: ListView(
+                  children: [
+                    Container(
+                      
+                      height: size.height* 0.15,
+                      child: Center(
+                        child: Text(
                           DemoLocalization.of(context)
-                              .getTranslatedValue('title'),
+                              .getTranslatedValue('category'),
                           style: GoogleFonts.rajdhani(
                             fontWeight: FontWeight.bold,
-                            fontSize: 60,
-                            color: Colors.white,
+                            fontSize: 24,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
-                        Text(
-                          DemoLocalization.of(context).getTranslatedValue(
-                            'description',
-                          ),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            Container(
-              transform: Matrix4.translationValues(0, 240, 1),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  )),
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      padding: EdgeInsets.all(8),
-                      child: Text(
-                        DemoLocalization.of(context)
-                            .getTranslatedValue('category'),
-                        style: GoogleFonts.rajdhani(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                            horizontal: size.width/5
+                      ),
+                        child: Container(
+                        margin: EdgeInsets.all(12),
+                        padding: EdgeInsets.all(8),
+                        width: 270,
+                        decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(80),
                         ),
+                        child: FlatButton(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: Text(
+                              DemoLocalization.of(context)
+                                  .getTranslatedValue('p'),
+                              style: GoogleFonts.rajdhani(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PatientLogin()),
+                              );
+                            }),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      padding: EdgeInsets.all(8),
-                      width: 270,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(80),
+                  
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                            horizontal: size.width/5
+                            ),
+                        child: Container(
+                        margin: EdgeInsets.all(12),
+                        padding: EdgeInsets.all(8),
+                        width: 270,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                        child: FlatButton(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: Text(
+                              DemoLocalization.of(context)
+                                  .getTranslatedValue('d'),
+                              style: GoogleFonts.rajdhani(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DoctorLogin()),
+                              );
+                            }),
                       ),
-                      child: FlatButton(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          child: Text(
-                            DemoLocalization.of(context)
-                                .getTranslatedValue('p'),
-                            style: GoogleFonts.rajdhani(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                            horizontal: size.width/5
+                            ),
+                        child: Container(
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(8),
+                        width: 270,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                        child: FlatButton(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            child: Text(
+                              DemoLocalization.of(context)
+                                  .getTranslatedValue('c'),
+                              style: GoogleFonts.rajdhani(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CaretakerLogin()),
+                              );
+                            }),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PatientLogin()),
-                            );
-                          }),
                     ),
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      padding: EdgeInsets.all(8),
-                      width: 270,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(80),
-                      ),
-                      child: FlatButton(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          child: Text(
-                            DemoLocalization.of(context)
-                                .getTranslatedValue('d'),
-                            style: GoogleFonts.rajdhani(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DoctorLogin()),
-                            );
-                          }),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      padding: EdgeInsets.all(8),
-                      width: 270,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(80),
-                      ),
-                      child: FlatButton(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          child: Text(
-                            DemoLocalization.of(context)
-                                .getTranslatedValue('c'),
-                            style: GoogleFonts.rajdhani(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CaretakerLogin()),
-                            );
-                          }),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
+              ),
           ],
         ),
       ),
