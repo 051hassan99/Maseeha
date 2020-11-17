@@ -22,5 +22,7 @@
     "backtologin":"Back to Login",
     "signup":"Sign up",
     "signin":"Login",
-    "EnterYourPmdcNo":"Enter Your Pmdc No"
+    "EnterYourPmdcNo":"Enter Your Pmdc No",
+    "EnterYourSpecialization": "Enter your Specialization",
+    "EnterYourHospital":"Enter Your Hospital"
 }

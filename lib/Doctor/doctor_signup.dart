@@ -12,21 +12,19 @@ class DoctorSignup extends StatefulWidget {
 class _DoctorSignupState extends State<DoctorSignup> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         body: Column(
           children: [
             Container(
-              height: 110,
+              height: (size.height * 2.5) / 10,
               color: Theme.of(context).primaryColor,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      right: 20,
-                    ),
+                  Center(
                     child: Text(
                       DemoLocalization.of(context).getTranslatedValue('d'),
                       style: GoogleFonts.rajdhani(
@@ -38,7 +36,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                   Container(
                       margin: EdgeInsets.only(
                         right: 10,
-                        bottom: 50,
+                        bottom: 80,
                       ),
                       child: LangSelector()),
                 ],
@@ -46,11 +44,12 @@ class _DoctorSignupState extends State<DoctorSignup> {
             ),
             Expanded(
               child: Container(
+                height: (size.height * 7) / 10,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                      topRight: Radius.circular(50.0),
+                      topLeft: Radius.circular(80.0),
+                      topRight: Radius.circular(80.0),
                     )),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -59,8 +58,9 @@ class _DoctorSignupState extends State<DoctorSignup> {
                   child: ListView(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(
-                          bottom: 20,
+                        height: size.height / 18,
+                        margin: EdgeInsets.symmetric(
+                          vertical: size.height / 50,
                         ),
                         child: Center(
                           child: Text(
@@ -74,234 +74,337 @@ class _DoctorSignupState extends State<DoctorSignup> {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(4),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.account_circle,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
                             ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('efullname'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.account_circle,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('efullname'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(4),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.email,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
                             ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('eemail'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.email,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('eemail'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(4),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.perm_identity,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
                             ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('EnterYourPmdcNo'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.home,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue(
+                                            'EnterYourHospital'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(4),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.vpn_key,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
                             ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('enewpass'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.email,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(4),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.vpn_key,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('econfirmpass'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('EnterYourPmdcNo'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                              top: 20,
-                              bottom: 10,
-                              left: 20,
-                              right: 20,
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
                             ),
-                            width: 130,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(80),
-                            ),
-                            child: FlatButton(
-                                splashColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                child: Text(
-                                  DemoLocalization.of(context)
-                                      .getTranslatedValue('signup'),
-                                  style: GoogleFonts.rajdhani(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Colors.white),
-                                ),
-                                onPressed: () {}),
+                            borderRadius: BorderRadius.circular(60),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(
-                              top: 20,
-                              bottom: 10,
-                              left: 15,
-                            ),
-                            width: 200,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(80),
-                            ),
-                            child: FlatButton(
-                                splashColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                child: Text(
-                                  DemoLocalization.of(context)
-                                      .getTranslatedValue('backtologin'),
-                                  style: GoogleFonts.rajdhani(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Colors.white),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.email,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
                                 ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DoctorLogin()),
-                                  );
-                                }),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue(
+                                            'EnterYourSpecialization'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.vpn_key,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('enewpass'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.vpn_key,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('econfirmpass'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      FittedBox(
+                        fit: BoxFit.contain,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 20,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 20,
+                                ),
+                                width: (size.width) / 3,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(80),
+                                ),
+                                child: FlatButton(
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    child: Text(
+                                      DemoLocalization.of(context)
+                                          .getTranslatedValue('signup'),
+                                      style: GoogleFonts.rajdhani(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
+                                    onPressed: () {}),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 10,
+                                  right: 20,
+                                ),
+                                width: ((size.width) * 1.5) / 3,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(80),
+                                ),
+                                child: FlatButton(
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    child: Text(
+                                      DemoLocalization.of(context)
+                                          .getTranslatedValue('backtologin'),
+                                      style: GoogleFonts.rajdhani(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DoctorLogin()),
+                                      );
+                                    }),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),

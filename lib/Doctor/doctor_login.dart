@@ -3,7 +3,7 @@ import 'package:fyp/Doctor/doctor_signup.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'patient_dashboard.dart';
 
 class DoctorLogin extends StatefulWidget {
@@ -14,21 +14,19 @@ class DoctorLogin extends StatefulWidget {
 class _DoctorLoginState extends State<DoctorLogin> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         body: Column(
           children: [
             Container(
-              height: 190,
+              height: (size.height * 2.5) / 10,
               color: Theme.of(context).primaryColor,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      right: 20,
-                    ),
+                  Center(
                     child: Text(
                       DemoLocalization.of(context).getTranslatedValue('d'),
                       style: GoogleFonts.rajdhani(
@@ -48,20 +46,24 @@ class _DoctorLoginState extends State<DoctorLogin> {
             ),
             Expanded(
               child: Container(
+                height: (size.height * 7) / 10,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                      topRight: Radius.circular(50.0),
+                      topLeft: Radius.circular(80.0),
+                      topRight: Radius.circular(80.0),
                     )),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 20,
+                    vertical: 30.0,
                   ),
                   child: ListView(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(20),
+                        height: size.height / 15,
+                        margin: EdgeInsets.symmetric(
+                          vertical: size.height / 35,
+                        ),
                         child: Center(
                           child: Text(
                             DemoLocalization.of(context)
@@ -74,141 +76,153 @@ class _DoctorLoginState extends State<DoctorLogin> {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(8),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: size.height / 40,
                           ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.account_circle,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
+                          padding: EdgeInsets.all(4),
+                          width: 300,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
                             ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('euser'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.account_circle,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(8),
-                        width: 300,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xFFBC7C7C7),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: Icon(
-                                Icons.vpn_key,
-                                size: 25,
-                                color: Color(0xFFBB9B9B9),
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: DemoLocalization.of(context)
-                                      .getTranslatedValue('epass'),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.all(10),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('euser'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 120.0,
-                        ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width / 9),
                         child: Container(
-                          margin: EdgeInsets.only(
-                            top: 20,
-                            bottom: 20,
+                          margin: EdgeInsets.symmetric(
+                            vertical: size.height / 40,
                           ),
-                          width: 100,
+                          padding: EdgeInsets.all(4),
+                          width: 300,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(80),
+                            border: Border.all(
+                              color: Color(0xFFBC7C7C7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(60),
                           ),
-                          child: FlatButton(
-                              splashColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              child: Text(
-                                DemoLocalization.of(context)
-                                    .getTranslatedValue('signin'),
-                                style: GoogleFonts.rajdhani(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    color: Colors.white),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 60,
+                                child: Icon(
+                                  Icons.vpn_key,
+                                  size: 25,
+                                  color: Color(0xFFBB9B9B9),
+                                ),
                               ),
-                              onPressed: () {
-                                /*Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => PatientDashboard()),
-                                );
-                              */
-                              }),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: DemoLocalization.of(context)
+                                        .getTranslatedValue('epass'),
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 100,
-                        ),
+                      FittedBox(
+                        fit: BoxFit.contain,
                         child: Container(
-                          width: 100,
-                          margin: EdgeInsets.only(
-                            top: 20,
-                            bottom: 20,
+                          margin: EdgeInsets.symmetric(
+                            vertical: size.height / 40,
                           ),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: FlatButton(
-                              splashColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              child: Text(
-                                DemoLocalization.of(context)
-                                    .getTranslatedValue('newmember'),
-                                style: GoogleFonts.rajdhani(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    color: Colors.white),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 20,
+                                ),
+                                width: (size.width) / 3,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(80),
+                                ),
+                                child: FlatButton(
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    child: Text(
+                                      DemoLocalization.of(context)
+                                          .getTranslatedValue('signin'),
+                                      style: GoogleFonts.rajdhani(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      /*  Navigator.push(context,
+                                                        MaterialPageRoute(builder: (context)=>
+                                                      PatientDashboard()),
+                                                      ); */
+                                    }),
                               ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DoctorSignup()),
-                                );
-                              }),
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: 10,
+                                  right: 20,
+                                ),
+                                width: ((size.width) * 1.5) / 3,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(80),
+                                ),
+                                child: FlatButton(
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    child: Text(
+                                      DemoLocalization.of(context)
+                                          .getTranslatedValue('newmember'),
+                                      style: GoogleFonts.rajdhani(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DoctorSignup()),
+                                      );
+                                    }),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
