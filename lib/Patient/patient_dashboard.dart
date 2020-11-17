@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fyp/lang_selector.dart';
+import 'package:fyp/Patient/main_drawer.dart';
+//import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import './main_drawer.dart';
 
 class PatientDashboard extends StatefulWidget {
   @override
@@ -24,7 +26,8 @@ class _PatientDashboardState extends State<PatientDashboard> {
             ),
           ),
         ),
-        leading: Icon(
+
+        /*leading: Icon(
           Icons.menu,
         ),
         actions: <Widget>[
@@ -34,9 +37,10 @@ class _PatientDashboardState extends State<PatientDashboard> {
             ),
             child: LangSelector(),
           ),
-        ],
-        backgroundColor: Theme.of(context).primaryColor,
+        ],*/
+        // backgroundColor: Theme.of(context).primaryColor,
       ),
+      drawer: MainDrawer(),
       body: ListView(
         children: [
           Row(
