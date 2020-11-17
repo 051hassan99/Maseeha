@@ -54,8 +54,8 @@ class _PatientSignupState extends State<PatientSignup> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50.0),
-                            topRight: Radius.circular(50.0),
+                            topLeft: Radius.circular(80.0),
+                            topRight: Radius.circular(80.0),
                           )
                         ),
                     child: Padding(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/Patient/main_drawer.dart';
-//import 'package:fyp/lang_selector.dart';
+import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,32 +13,48 @@ class PatientDashboard extends StatefulWidget {
 
 class _PatientDashboardState extends State<PatientDashboard> {
   var _mainColor = Colors.redAccent;
-
+ 
   @override
   Widget build(BuildContext context) {
+      Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            DemoLocalization.of(context).getTranslatedValue('title'),
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+        title: Padding(
+                  padding: EdgeInsets.only(
+                    right: size.width/30,
+                   
+                   
+                  ),
+                  
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                              Container(
+                                width: size.width*0.28,
+                                
+                                    child: Center(
+                                      child: Text(
+                                        DemoLocalization.of(context).getTranslatedValue('title'),
+                                        style: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                          ),
+                        ],
+                  ),
         ),
 
-        /*leading: Icon(
-          Icons.menu,
-        ),
+        
         actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(
-              right: 20.0,
+              left:size.width/30,
+              right: size.width/30,
             ),
-            child: LangSelector(),
-          ),
-        ],*/
-        // backgroundColor: Theme.of(context).primaryColor,
+            child: LangSelector()),
+        ],
+       
       ),
       drawer: MainDrawer(),
       body: ListView(
