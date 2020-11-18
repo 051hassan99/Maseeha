@@ -74,154 +74,164 @@ class _PatientDashboardState extends State<PatientDashboard> {
             ],
           ),
           
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-               _buildCard(
-                  icon: Icon(
-                    Icons.schedule,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('ScheduleAppointment'),
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+          FittedBox(
+            fit: BoxFit.contain,
+                      child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                 _buildCard(
+                    icon: Icon(
+                      Icons.schedule,
+                      size: 30,
+                      color: _mainColor,
                     ),
-                     onPressed: ()
-                      {
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>
-                          PatientLogin()),
-                          ); 
-                    },
-                  ),
-                ),
-                      
-                   
-          
-              _buildCard(
-                  icon: Icon(
-                    FontAwesome.location_arrow,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('FindLocation'),
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                      
+                    text: FlatButton(
+                        child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('ScheduleAppointment'),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                       onPressed: ()
+                        {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>
+                            PatientLogin()),
+                            ); 
+                      },
                     ),
-                     onPressed: ()
-                      {
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>
-                          PatientLogin()),
-                          ); 
-                    },
                   ),
-                ),
+                        
+                     
+            
+                _buildCard(
+                    icon: Icon(
+                      FontAwesome.location_arrow,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('FindLocation'),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                        
+                      ),
+                       onPressed: ()
+                        {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>
+                            PatientLogin()),
+                            ); 
+                      },
+                    ),
+                  ),
 
-              
-            ],
+                
+              ],
+            ),
           ),
           SizedBox(height: size.height/50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildCard(
-                  icon: Icon(
-                    Icons.notification_important,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('MedicineAlerts'),
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+          FittedBox(
+            fit: BoxFit.contain,
+                      child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildCard(
+                    icon: Icon(
+                      Icons.notification_important,
+                      size: 30,
+                      color: _mainColor,
                     ),
-                     onPressed: ()
-                      {
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>
-                          PatientLogin()),
-                          ); 
-                    },
-                  ),
-              ),
-               _buildCard(
-                  icon: Icon(
-                    Icons.call,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('TeleMedicine'),
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    text: FlatButton(
+                        child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('MedicineAlerts'),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                       onPressed: ()
+                        {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>
+                            PatientLogin()),
+                            ); 
+                      },
                     ),
-                     onPressed: ()
-                      {
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>
-                          PatientLogin()),
-                          ); 
-                    },
-                  ),
-               ),
-            ],
-          ),
-          SizedBox(height: size.height/50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-             _buildCard(
-                  icon: Icon(
-                    FontAwesome.shopping_cart,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('BuyDrugsOnline'),
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                     onPressed: ()
-                      {
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>
-                          PatientLogin()),
-                          ); 
-                    },
-                  ),
-              ),
-             _buildCard(
-                  icon: Icon(
-                    MaterialIcons.attach_money,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                 text: FlatButton(
-                      child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('RequestCaretaker'),
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                     onPressed: ()
-                      {
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>
-                          PatientLogin()),
-                          ); 
-                    },
-                  ),
                 ),
-            ],
+                 _buildCard(
+                    icon: Icon(
+                      Icons.call,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('TeleMedicine'),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                       onPressed: ()
+                        {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>
+                            PatientLogin()),
+                            ); 
+                      },
+                    ),
+                 ),
+              ],
+            ),
+          ),
+          SizedBox(height: size.height/50),
+
+          FittedBox(
+            fit: BoxFit.contain,
+            child: Row(
+               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+               _buildCard(
+                    icon: Icon(
+                      FontAwesome.shopping_cart,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('BuyDrugsOnline'),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                       onPressed: ()
+                        {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>
+                            PatientLogin()),
+                            ); 
+                      },
+                    ),
+                ),
+               _buildCard(
+                    icon: Icon(
+                      MaterialIcons.attach_money,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                   text: FlatButton(
+                        child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('RequestCaretaker'),
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                       onPressed: ()
+                        {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=>
+                            PatientLogin()),
+                            ); 
+                      },
+                    ),
+                  ),
+              ],
+            ),
           ),
         ],
       ),
@@ -231,8 +241,8 @@ class _PatientDashboardState extends State<PatientDashboard> {
   Container _buildCard({final Icon icon, final FlatButton text}) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height/4,
-      width: size.width/2,
+      height: size.height/3.3,
+      width: size.width/1.6,
     
       decoration: BoxDecoration(
         color: Colors.white,
