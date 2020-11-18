@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/Patient/main_drawer.dart';
+import 'package:fyp/Patient/patient_login.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -57,8 +58,8 @@ class _PatientDashboardState extends State<PatientDashboard> {
             children: [
               Container(
                 margin: EdgeInsets.only(
-                  top: 20,
-                  bottom: 20,
+                  top: size.height/35,
+                  bottom: size.width/30,
                 ),
                 child: Text(
                   DemoLocalization.of(context)
@@ -72,87 +73,154 @@ class _PatientDashboardState extends State<PatientDashboard> {
               ),
             ],
           ),
+          
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+               _buildCard(
+                  icon: Icon(
+                    Icons.schedule,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
+                      child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('ScheduleAppointment'),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    ),
+                     onPressed: ()
+                      {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>
+                          PatientLogin()),
+                          ); 
+                    },
+                  ),
+                ),
+                      
+                   
+          
               _buildCard(
-                icon: Icon(
-                  Icons.schedule,
-                  color: _mainColor,
+                  icon: Icon(
+                    FontAwesome.location_arrow,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
+                      child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('FindLocation'),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      
+                    ),
+                     onPressed: ()
+                      {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>
+                          PatientLogin()),
+                          ); 
+                    },
+                  ),
                 ),
-                text: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('ScheduleAppointment'),
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
-              _buildCard(
-                icon: Icon(
-                  FontAwesome.location_arrow,
-                  color: _mainColor,
-                ),
-                text: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('FindLocation'),
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
+
+              
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: size.height/50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildCard(
-                icon: Icon(
-                  Icons.notification_important,
-                  color: _mainColor,
-                ),
-                text: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('MedicineAlerts'),
-                  style: TextStyle(fontSize: 12),
-                ),
+                  icon: Icon(
+                    Icons.notification_important,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
+                      child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('MedicineAlerts'),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    ),
+                     onPressed: ()
+                      {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>
+                          PatientLogin()),
+                          ); 
+                    },
+                  ),
               ),
-              _buildCard(
-                icon: Icon(
-                  Icons.call,
-                  color: _mainColor,
-                ),
-                text: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('TeleMedicine'),
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
+               _buildCard(
+                  icon: Icon(
+                    Icons.call,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
+                      child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('TeleMedicine'),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    ),
+                     onPressed: ()
+                      {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>
+                          PatientLogin()),
+                          ); 
+                    },
+                  ),
+               ),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: size.height/50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildCard(
-                icon: Icon(
-                  FontAwesome.shopping_cart,
-                  color: _mainColor,
-                ),
-                text: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('BuyDrugsOnline'),
-                  style: TextStyle(fontSize: 12),
-                ),
+             _buildCard(
+                  icon: Icon(
+                    FontAwesome.shopping_cart,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
+                      child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('BuyDrugsOnline'),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    ),
+                     onPressed: ()
+                      {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>
+                          PatientLogin()),
+                          ); 
+                    },
+                  ),
               ),
-              _buildCard(
-                icon: Icon(
-                  MaterialIcons.attach_money,
-                  color: _mainColor,
+             _buildCard(
+                  icon: Icon(
+                    MaterialIcons.attach_money,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                 text: FlatButton(
+                      child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('RequestCaretaker'),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    ),
+                     onPressed: ()
+                      {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=>
+                          PatientLogin()),
+                          ); 
+                    },
+                  ),
                 ),
-                text: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('RequestCaretaker'),
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
             ],
           ),
         ],
@@ -160,21 +228,24 @@ class _PatientDashboardState extends State<PatientDashboard> {
     );
   }
 
-  Container _buildCard({final Icon icon, final Text text}) {
+  Container _buildCard({final Icon icon, final FlatButton text}) {
+    Size size = MediaQuery.of(context).size;
     return Container(
+      height: size.height/4,
+      width: size.width/2,
+    
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
       ),
-      height: 157,
-      width: 200,
+      
       padding: EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: 60,
-            width: 60,
+            height: size.height/11,
+            width: size.width/5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
@@ -184,38 +255,12 @@ class _PatientDashboardState extends State<PatientDashboard> {
             ),
             child: icon,
           ),
-          Container(
-            padding: EdgeInsets.all(12),
-            child: text,
-          ),
-          //SizedBox(height: 20),
-          /*Text(
-            "Next Difficulty Estimated",
-            style: TextStyle(fontSize: 12),
-          ),
-          SizedBox(height: 10),
-          Text(
-            "618,404	\t \t BTC.com",
-            style: TextStyle(fontSize: 12),
-          ),
-          SizedBox(height: 10),
-          Container(
-            width: 120,
-            child: MaterialButton(
-              onPressed: () {},
-              child: Text(
-                "7048 BTC",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),*/
-          //color: _mainColor,
-          //elevation: 10,
-          //shape: RoundedRectangleBorder(
-          //  borderRadius: BorderRadius.circular(12),
-          //),
-          // ),
-          //s),
+              Padding(
+                padding: EdgeInsets.all(
+                size.width/30),
+                child: text,
+              ),
+       
         ],
       ),
     );
