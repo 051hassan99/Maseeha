@@ -26,11 +26,14 @@
     "EnterYourSpecialization": "Enter your Specialization",
     "EnterYourHospital":"Enter Your Hospital",
     "patientdashboard":"Patient's Dashboard",
+    "setupmeet":"Set Up A Meet",
     "ScheduleAppointment": "Schedule Appointment",
     "FindLocation": "Find Location",
-    "MedicineAlerts": "Medicine Alerts",
+    "MedicineAlerts": "Patient's Custodian",
     "TeleMedicine": "Tele-Medicine",
     "BuyDrugsOnline": "Buy Drugs Online",
-    "RequestCaretaker": "Request Caretaker"
+    "RequestCaretaker": "Request Caretaker",
+    "healthylifestyle":"Healthy LifeStyle",
+    "doctordashboard":"Doctor's Dashboard"
 
 }

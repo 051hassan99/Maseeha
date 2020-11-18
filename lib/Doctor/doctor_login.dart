@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/Doctor/doctor_dashboard.dart';
 import 'package:fyp/Doctor/doctor_signup.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 //import 'package:flutter_signin_button/flutter_signin_button.dart';
 //import 'patient_dashboard.dart';
 
@@ -160,7 +162,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                         fit: BoxFit.contain,
                         child: Container(
                           margin: EdgeInsets.symmetric(
-                            vertical: size.height / 40,
+                            vertical: size.height / 18,
                           ),
                           child: Row(
                             children: [
@@ -185,10 +187,11 @@ class _DoctorLoginState extends State<DoctorLogin> {
                                           color: Colors.white),
                                     ),
                                     onPressed: () {
-                                      /*  Navigator.push(context,
+                                       
+                                                       Navigator.push(context,
                                                         MaterialPageRoute(builder: (context)=>
-                                                      PatientDashboard()),
-                                                      ); */
+                                                        DoctorDashboard()),
+                                                       );
                                     }),
                               ),
                               Container(

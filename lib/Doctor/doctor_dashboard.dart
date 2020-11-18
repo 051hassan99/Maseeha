@@ -5,15 +5,15 @@ import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './main_drawer.dart';
 
 
-class PatientDashboard extends StatefulWidget {
+
+class DoctorDashboard extends StatefulWidget {
   @override
-  _PatientDashboardState createState() => _PatientDashboardState();
+  _DoctorDashboardState createState() => _DoctorDashboardState();
 }
 
-class _PatientDashboardState extends State<PatientDashboard> {
+class _DoctorDashboardState extends State<DoctorDashboard> {
   
   
   @override
@@ -65,7 +65,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
                 ),
                 child: Text(
                   DemoLocalization.of(context)
-                      .getTranslatedValue('patientdashboard'),
+                      .getTranslatedValue('doctordashboard'),
                   style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).primaryColor,
@@ -90,7 +90,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
                     text: FlatButton(
                         child: Text(
                         DemoLocalization.of(context)
-                            .getTranslatedValue('setupmeet'),
+                            .getTranslatedValue('ScheduleAppointment'),
                         style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                       ),
                        onPressed: ()
@@ -232,43 +232,6 @@ class _PatientDashboardState extends State<PatientDashboard> {
                       },
                     ),
                   ),
-              ],
-            ),
-          ),
-
-          FittedBox(
-            fit: BoxFit.contain,
-            child: Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-               Padding(
-                    padding: EdgeInsets.symmetric(
-                      
-                      horizontal: size.width/4,
-                    ),
-
-                    child: _buildCard(
-                      icon: Icon(
-                        MaterialIcons.healing,
-                        size: 30,
-                        color: _mainColor,
-                      ),
-                      text: FlatButton(
-                          child: Text(
-                          DemoLocalization.of(context)
-                              .getTranslatedValue('healthylifestyle'),
-                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                        ),
-                         onPressed: ()
-                          {
-                                Navigator.push(context,
-                                MaterialPageRoute(builder: (context)=>
-                              PatientLogin()),
-                              ); 
-                        },
-                      ),
-                  ),
-               ),
               ],
             ),
           ),

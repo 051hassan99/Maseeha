@@ -3,6 +3,7 @@ import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'doctor_login.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class DoctorSignup extends StatefulWidget {
   @override
@@ -169,7 +170,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                               Container(
                                 width: 60,
                                 child: Icon(
-                                  Icons.home,
+                                  FontAwesome.hospital_o,
                                   size: 25,
                                   color: Color(0xFFBB9B9B9),
                                 ),
