@@ -13,11 +13,12 @@ class PatientDashboard extends StatefulWidget {
 }
 
 class _PatientDashboardState extends State<PatientDashboard> {
-  var _mainColor = Colors.redAccent;
-
+  
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+     var _mainColor = Theme.of(context).primaryColor; 
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -259,8 +260,8 @@ class _PatientDashboardState extends State<PatientDashboard> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                width: 2,
-                color: _mainColor,
+                width: 4,
+                color: Theme.of(context).primaryColor,
               ),
             ),
             child: icon,
