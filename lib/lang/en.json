@@ -24,5 +24,13 @@
     "signin":"Login",
     "EnterYourPmdcNo":"Enter Your Pmdc No",
     "EnterYourSpecialization": "Enter your Specialization",
-    "EnterYourHospital":"Enter Your Hospital"
+    "EnterYourHospital":"Enter Your Hospital",
+    "patientdashboard":"Patient's Dashboard",
+    "ScheduleAppointment": "Schedule Appointment",
+    "FindLocation": "Find Location",
+    "MedicineAlerts": "Medicine Alerts",
+    "TeleMedicine": "Tele-Medicine",
+    "BuyDrugsOnline": "Buy Drugs Online",
+    "RequestCaretaker": "Request Caretaker"
+
 }

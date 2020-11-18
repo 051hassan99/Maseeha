@@ -22,6 +22,14 @@
     "backtologin":"لاگ ان پر واپس جائیں",
     "signup":"سائن اپ",
     "signin":"لاگ ان کریں",
-    "EnterYourPmdcNo":"اپنا 'پی ایم ڈی سی' نمبر لکھیں"
+    "EnterYourPmdcNo":"اپنا 'پی ایم ڈی سی' نمبر لکھیں",
+    "EnterYourSpecialization": "اپنی تخصص درج کریں",
+    "patientdashboard":"مریض ڈیش بورڈ",
+    "ScheduleAppointment": "شیڈول اپائنٹمنٹ",
+    "FindLocation": "تلاش کریں منزل",
+    "MedicineAlerts": "میڈیسن الرٹس",
+    "TeleMedicine": "ٹیلی میڈیسن",
+    "BuyDrugsOnline": "آن لائن دوائیں خریدیں",
+    "RequestCaretaker": "نگراں سے درخواست کریں"
     
 }
