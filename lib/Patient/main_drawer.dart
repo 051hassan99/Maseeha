@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/Patient/signin_facebook.dart' as auth;
 
 class MainDrawer extends StatelessWidget {
+  var img = auth.a.userProfileList[auth.E.photoURL.index];
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -22,7 +25,15 @@ class MainDrawer extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: AssetImage('assets/images/myImg.jpg'),
+                        image: NetworkImage(
+                          auth.a.isLoggedIn
+                              ? auth.a.userProfileList[auth.E.photoURL.index] !=
+                                      null
+                                  ? auth
+                                      .a.userProfileList[auth.E.photoURL.index]
+                                  : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fflutterappworld.com%2Fa-high-performance-flutter-widget-to-render-bottts-svg-avatars%2F&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'
+                              : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fflutterappworld.com%2Fa-high-performance-flutter-widget-to-render-bottts-svg-avatars%2F&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ',
+                        ),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -30,19 +41,33 @@ class MainDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Hassan Ahmed',
+                      auth.a.isLoggedIn
+                          ? auth.a.userProfileList[auth.E.email.index] != null
+                              ? auth.a.userProfileList[auth.E.email.index]
+                              : 'abc@gmail.com'
+                          : '',
+                    ),
+
+                    /*     'Hassan Ahmed',
                       style: TextStyle(
                         fontSize: 22,
                         color: Colors.white,
                       ),
                     ),
+                  ),*/
+
+                    //),
                   ),
                   Text(
-                    'hassanahmed141947@gmail.com',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+                    auth.a.isLoggedIn
+                        ? auth.a.userProfileList[auth.E.username.index] != null
+                            ? auth.a.userProfileList[auth.E.username.index]
+                            : 'abc@gmail.com'
+                        : '',
                   )
+                  //  style: TextStyle(
+                  //    color: Colors.white,
+                  //  ),
                 ],
               ),
             ),
@@ -68,15 +93,16 @@ class MainDrawer extends StatelessWidget {
             onTap: null,
           ),
           ListTile(
-            leading: Icon(Icons.arrow_back),
-            title: Text(
-              'Logout',
-              style: TextStyle(
-                fontSize: 18,
+              leading: Icon(Icons.arrow_back),
+              title: Text(
+                'Logout',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
-            ),
-            onTap: null,
-          ),
+              onTap: () {
+                auth.a.logout(context);
+              }),
         ],
       ),
     );
