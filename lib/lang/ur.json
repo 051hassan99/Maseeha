@@ -25,11 +25,14 @@
     "EnterYourPmdcNo":"اپنا 'پی ایم ڈی سی' نمبر لکھیں",
     "EnterYourSpecialization": "اپنی تخصص درج کریں",
     "patientdashboard":"مریض ڈیش بورڈ",
+    "setupmeet":"ایک میٹنگ مرتب کریں",
     "ScheduleAppointment": "شیڈول اپائنٹمنٹ",
     "FindLocation": "تلاش کریں منزل",
-    "MedicineAlerts": "میڈیسن الرٹس",
+    "MedicineAlerts": "مریض کا نگران",
     "TeleMedicine": "ٹیلی میڈیسن",
     "BuyDrugsOnline": "آن لائن دوائیں خریدیں",
-    "RequestCaretaker": "نگراں سے درخواست کریں"
+    "RequestCaretaker": "نگراں سے درخواست کریں",
+    "healthylifestyle":"صحت مند طرز زندگی",
+    "doctordashboard":"ڈاکٹر کا ڈیش بورڈ"
     
 }
