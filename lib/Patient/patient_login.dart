@@ -82,12 +82,14 @@ class _PatientLoginState extends State<PatientLogin> {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(
-                                left: 20,
-                                right: 10,
+                              width: size.width / 2,
+                              padding: EdgeInsets.only(
+                              
+                               left: 20,
+                               right: 10,
                                 bottom: 10,
                               ),
-                              width: size.width / 2,
+                           
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 borderRadius: BorderRadius.circular(50),
@@ -103,28 +105,31 @@ class _PatientLoginState extends State<PatientLogin> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(
-                                left: 10,
-                                right: 20,
-                                bottom: 10,
-                              ),
-                              width: size.width / 2,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              //child: FittedBox(
-                              //  fit: BoxFit.contain,
+                            padding: EdgeInsets.only(
+                              
+                              right: 20,
+                              left: 10,
+                              bottom: 10,
                             ),
-                            SignInButton(
+                            width: size.width / 2,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: FittedBox(
+                            fit: BoxFit.contain,
+                              
+                           child: SignInButton(
                               Buttons.FacebookNew,
                               text: DemoLocalization.of(context)
                                   .getTranslatedValue('fbtext'),
                               onPressed: () {
                                 this.setState(() {
                                   auth.a.logInWithFb(context);
-                                });
-                              },
+                                    });
+                                  },
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -238,12 +243,14 @@ class _PatientLoginState extends State<PatientLogin> {
                                           color: Colors.white),
                                     ),
                                     onPressed: () {
+
+                                      if (auth.a.isLoggedIn){
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 PatientDashboard()),
-                                      );
+                                          );}
                                     }),
                               ),
                               Container(
