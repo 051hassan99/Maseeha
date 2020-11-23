@@ -1,10 +1,8 @@
 library maseeha.auth;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fyp/Patient/patient_dashboard.dart';
 import 'package:fyp/Patient/patient_login.dart';
-//import 'package:fyp/Patient/patient_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
 
@@ -35,7 +33,7 @@ class _Auth {
       case FacebookLoginStatus.loggedIn:
         final token = result.accessToken.token;
         final graphResponse = await http.get(
-            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
+            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=$token');
         final profile = JSON.jsonDecode(graphResponse.body);
         takeToPatientDashboard(context);
         print(profile);
@@ -65,8 +63,7 @@ class _Auth {
     facebookLogin.logOut();
     isLoggedIn = false;
     takeToPatientLogIn(context);
-    //takeToPatientLogIn(context);
-    //PatientLogin();
+   
   }
 
   takeToPatientDashboard(BuildContext context) {

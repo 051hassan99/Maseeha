@@ -187,11 +187,12 @@ class _DoctorLoginState extends State<DoctorLogin> {
                                           color: Colors.white),
                                     ),
                                     onPressed: () {
-                                       
-                                                       Navigator.push(context,
-                                                        MaterialPageRoute(builder: (context)=>
-                                                        DoctorDashboard()),
-                                                       );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DoctorDashboard()),
+                                      );
                                     }),
                               ),
                               Container(

@@ -3,122 +3,105 @@ import 'package:fyp/Patient/signin_facebook.dart' as auth;
 import 'package:fyp/Patient/signin_google.dart' as googleauth;
 
 class MainDrawer extends StatelessWidget {
-  var img = auth.a.userProfileList[auth.E.photoURL.index];
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: <Widget>[
-          auth.a.isLoggedIn?
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                Container(
-                    width: 100,
-                    height: 100,
-                    margin: EdgeInsets.only(
-                      top: 30,
-                    ),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          
-                              auth.a.userProfileList[auth.E.photoURL.index] != null ?
-                                    
-                                  auth.a.userProfileList[auth.E.photoURL.index]
-                                  : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fflutterappworld.com%2Fa-high-performance-flutter-widget-to-render-bottts-svg-avatars%2F&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'
-                              
-
+          auth.a.isLoggedIn
+              ? Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(20),
+                  color: Theme.of(context).primaryColor,
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: 100,
+                          height: 100,
+                          margin: EdgeInsets.only(
+                            top: 30,
+                          ),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: NetworkImage(auth.a.userProfileList[
+                                          auth.E.photoURL.index] !=
+                                      null
+                                  ? auth
+                                      .a.userProfileList[auth.E.photoURL.index]
+                                  : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fflutterappworld.com%2Fa-high-performance-flutter-widget-to-render-bottts-svg-avatars%2F&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                    
-                           auth.a.userProfileList[auth.E.email.index] != null
-                              ? auth.a.userProfileList[auth.E.email.index]
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            auth.a.userProfileList[auth.E.email.index] != null
+                                ? auth.a.userProfileList[auth.E.email.index]
+                                : 'abc@gmail.com',
+                          ),
+                        ),
+                        Text(
+                          auth.a.userProfileList[auth.E.username.index] != null
+                              ? auth.a.userProfileList[auth.E.username.index]
                               : 'abc@gmail.com',
-                       
-                    ),
-
-                  ),
-                  Text(
-                    
-                        auth.a.userProfileList[auth.E.username.index] != null
-                            ? auth.a.userProfileList[auth.E.username.index]
-                            : 'abc@gmail.com',
-                       
-                  )
-                
-                ],
-              ),
-            ),
-          )
-
-        :Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                Container(
-                    width: 100,
-                    height: 100,
-                    margin: EdgeInsets.only(
-                      top: 30,
-                    ),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          
-                              googleauth.abc.userProfileList[googleauth.E.photoURL.index] != null ?
-                                    
-                                  googleauth.abc.userProfileList[googleauth.E.photoURL.index]
-                                  : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fflutterappworld.com%2Fa-high-performance-flutter-widget-to-render-bottts-svg-avatars%2F&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'
-                              
-
-                              ),
-                        fit: BoxFit.fill,
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                    
-                           googleauth.abc.userProfileList[googleauth.E.email.index] != null
-                              ? googleauth.abc.userProfileList[googleauth.E.email.index]
+                )
+              : Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(20),
+                  color: Theme.of(context).primaryColor,
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: 100,
+                          height: 100,
+                          margin: EdgeInsets.only(
+                            top: 30,
+                          ),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: NetworkImage(googleauth
+                                              .abc.userProfileList[
+                                          googleauth.E.photoURL.index] !=
+                                      null
+                                  ? googleauth.abc.userProfileList[
+                                      googleauth.E.photoURL.index]
+                                  : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fflutterappworld.com%2Fa-high-performance-flutter-widget-to-render-bottts-svg-avatars%2F&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            googleauth.abc.userProfileList[
+                                        googleauth.E.email.index] !=
+                                    null
+                                ? googleauth.abc
+                                    .userProfileList[googleauth.E.email.index]
+                                : 'abc@gmail.com',
+                          ),
+                        ),
+                        Text(
+                          googleauth.abc.userProfileList[
+                                      googleauth.E.username.index] !=
+                                  null
+                              ? googleauth.abc
+                                  .userProfileList[googleauth.E.username.index]
                               : 'abc@gmail.com',
-                       
+                        ),
+                      ],
                     ),
-
                   ),
-                  Text(
-                    
-                        googleauth.abc.userProfileList[googleauth.E.username.index] != null
-                            ? googleauth.abc.userProfileList[googleauth.E.username.index]
-                            : 'abc@gmail.com',
-                       
-                  )
-                
-                ],
-              ),
-            ),
-        ),
-            
-          
-
+                ),
           ListTile(
             leading: Icon(Icons.person),
             title: Text(
@@ -148,9 +131,10 @@ class MainDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                if(auth.a.isLoggedIn){
-                auth.a.logout(context);}
-                if(googleauth.abc.isGoogleLoggedIn){
+                if (auth.a.isLoggedIn) {
+                  auth.a.logout(context);
+                }
+                if (googleauth.abc.isGoogleLoggedIn) {
                   googleauth.abc.logout(context);
                 }
               }),
