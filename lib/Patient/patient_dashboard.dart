@@ -122,7 +122,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
                         {
                               Navigator.push(context,
                               MaterialPageRoute(builder: (context)=>
-                            PatientLogin()),
+                              PatientLogin()),
                             ); 
                       },
                     ),

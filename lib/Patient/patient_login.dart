@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'patient_dashboard.dart';
 import 'package:fyp/Patient/signin_facebook.dart' as auth;
+import 'package:fyp/Patient/signin_google.dart' as googleauth;
 
 class PatientLogin extends StatefulWidget {
   @override
@@ -100,7 +101,11 @@ class _PatientLoginState extends State<PatientLogin> {
                                   Buttons.Google,
                                   text: DemoLocalization.of(context)
                                       .getTranslatedValue('gmailtext'),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                     this.setState(() {
+                                    googleauth.abc.login(context);
+                                    });
+                                  },
                                 ),
                               ),
                             ),
@@ -244,14 +249,16 @@ class _PatientLoginState extends State<PatientLogin> {
                                     ),
                                     onPressed: () {
 
-                                      if (auth.a.isLoggedIn){
+                                      
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 PatientDashboard()),
-                                          );}
-                                    }),
+                                          );
+                                        }
+                                    
+                                    ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(
