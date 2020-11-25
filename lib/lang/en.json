@@ -34,6 +34,12 @@
     "BuyDrugsOnline": "Buy Drugs Online",
     "RequestCaretaker": "Request Caretaker",
     "healthylifestyle":"Healthy LifeStyle",
-    "doctordashboard":"Doctor's Dashboard"
-
+    "doctordashboard":"Doctor's Dashboard",
+    "namerequired":"Name is required",
+    "emailrequired":"Email is required",
+    "addressrequired":"Address is required",
+    "passwordrequired":"password is required",
+    "confirmpassrequired":"Confirm your password",
+    "entervalidemail":"Please Enter a Valid Email"
+    
 }

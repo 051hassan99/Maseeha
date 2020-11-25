@@ -33,6 +33,12 @@
     "BuyDrugsOnline": "آن لائن دوائیں خریدیں",
     "RequestCaretaker": "نگراں سے درخواست کریں",
     "healthylifestyle":"صحت مند طرز زندگی",
-    "doctordashboard":"ڈاکٹر کا ڈیش بورڈ"
+    "doctordashboard":"ڈاکٹر کا ڈیش بورڈ",
+    "namerequired":"نام کی ضرورت ہے",
+    "emailrequired":"ای میل کی ضرورت ہے",
+    "addressrequired":"پتہ ضروری ہے",
+    "passwordrequired":"پاس ورڈ کی ضرورت ہے",
+    "confirmpassrequired":"اپنے پاس ورڈ کی تصدیق کریں",
+    "entervalidemail":"ایک درست ای میل درج کریں"
     
 }
