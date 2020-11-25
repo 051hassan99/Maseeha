@@ -37,6 +37,12 @@
     "Profile":"پروفائل",
     "Settings":"ترتیبات",
     "LogOut":"لاگ آوٹ",
-    "caretakerdashboard":"نگراں ڈیش بورڈ"
+    "caretakerdashboard":"نگراں ڈیش بورڈ",
+    "namerequired":"نام کی ضرورت ہے",
+    "emailrequired":"ای میل کی ضرورت ہے",
+    "addressrequired":"پتہ ضروری ہے",
+    "passwordrequired":"پاس ورڈ کی ضرورت ہے",
+    "confirmpassrequired":"اپنے پاس ورڈ کی تصدیق کریں",
+    "entervalidemail":"ایک درست ای میل درج کریں"
     
 }

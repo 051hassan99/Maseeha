@@ -38,7 +38,14 @@
     "Profile":"Profile",
     "Settings":"Settings",
     "LogOut":"LogOut",
-    "caretakerdashboard":"Caretaker Dashboard"
+    "caretakerdashboard":"Caretaker Dashboard",
 
 
+    "namerequired":"Name is required",
+    "emailrequired":"Email is required",
+    "addressrequired":"Address is required",
+    "passwordrequired":"password is required",
+    "confirmpassrequired":"Confirm your password",
+    "entervalidemail":"Please Enter a Valid Email"
+    
 }
