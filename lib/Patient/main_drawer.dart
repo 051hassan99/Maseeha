@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/localization/demo_localization.dart';
 import 'package:fyp/Patient/signin_facebook.dart' as auth;
 import 'package:fyp/Patient/signin_google.dart' as googleauth;
 
@@ -105,7 +106,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.person),
             title: Text(
-              'Profile',
+              DemoLocalization.of(context).getTranslatedValue('Profile'),
               style: TextStyle(
                 fontSize: 18,
               ),
@@ -115,7 +116,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text(
-              'Settings',
+              DemoLocalization.of(context).getTranslatedValue('Settings'),
               style: TextStyle(
                 fontSize: 18,
               ),
@@ -125,7 +126,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
               leading: Icon(Icons.arrow_back),
               title: Text(
-                'Logout',
+                DemoLocalization.of(context).getTranslatedValue('LogOut'),
                 style: TextStyle(
                   fontSize: 18,
                 ),

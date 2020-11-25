@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:fyp/Doctor/doctor_drawer.dart';
+import 'package:fyp/Caretaker/caretaker_drawer.dart';
 import 'package:fyp/Patient/patient_login.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DoctorDashboard extends StatefulWidget {
+class CaretakerDashboard extends StatefulWidget {
   @override
-  _DoctorDashboardState createState() => _DoctorDashboardState();
+  _CaretakerDashboardState createState() => _CaretakerDashboardState();
 }
 
-class _DoctorDashboardState extends State<DoctorDashboard> {
+class _CaretakerDashboardState extends State<CaretakerDashboard> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -48,7 +48,7 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
               child: LangSelector()),
         ],
       ),
-      drawer: DoctorDrawer(),
+      drawer: CaretakerDrawer(),
       body: ListView(
         children: [
           Row(
@@ -61,7 +61,7 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
                 ),
                 child: Text(
                   DemoLocalization.of(context)
-                      .getTranslatedValue('doctordashboard'),
+                      .getTranslatedValue('caretakerdashboard'),
                   style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).primaryColor,

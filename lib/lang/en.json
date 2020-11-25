@@ -34,6 +34,11 @@
     "BuyDrugsOnline": "Buy Drugs Online",
     "RequestCaretaker": "Request Caretaker",
     "healthylifestyle":"Healthy LifeStyle",
-    "doctordashboard":"Doctor's Dashboard"
+    "doctordashboard":"Doctor's Dashboard",
+    "Profile":"Profile",
+    "Settings":"Settings",
+    "LogOut":"LogOut",
+    "caretakerdashboard":"Caretaker Dashboard"
+
 
 }
