@@ -4,10 +4,14 @@ import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'category.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 //abcs
 //mmm
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

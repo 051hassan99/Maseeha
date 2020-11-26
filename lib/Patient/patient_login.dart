@@ -8,6 +8,7 @@ import 'patient_dashboard.dart';
 import 'package:fyp/Patient/signin_facebook.dart' as auth;
 import 'package:fyp/Patient/signin_google.dart' as googleauth;
 
+
 class PatientLogin extends StatefulWidget {
   @override
   _PatientLoginState createState() => _PatientLoginState();
@@ -16,6 +17,7 @@ class PatientLogin extends StatefulWidget {
 class _PatientLoginState extends State<PatientLogin> {
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(

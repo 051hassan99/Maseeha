@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'patient_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PatientSignup extends StatefulWidget {
   @override
@@ -10,11 +14,41 @@ class PatientSignup extends StatefulWidget {
 }
 
 class _PatientSignupState extends State<PatientSignup> {
+  final auth = FirebaseAuth.instance;
+  User user;
   String name;
   String email;
   String address;
   String password;
   String confirmPass;
+  Timer timer;
+  var varified;
+
+  void sendVerificationEmail() async {
+    user = await auth.currentUser;
+
+    await user.sendEmailVerification();
+    Fluttertoast.showToast(msg: "email verfication link sent");
+  }
+
+  Future <void> verifiedEmail() async {
+    user = await auth.currentUser;
+    await user.reload();
+    varified = await user.emailVerified;
+
+
+    if (varified) {
+      timer.cancel();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PatientLogin()),
+      );
+    }
+
+    else{
+      print('EMAIL NOT VARIFIEDDDDDDDDD');
+    }
+  }
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   @override
@@ -262,6 +296,7 @@ class _PatientSignupState extends State<PatientSignup> {
                                 ),
                                 Expanded(
                                   child: TextFormField(
+                                    obscureText: true,
                                     decoration: InputDecoration(
                                       hintText: DemoLocalization.of(context)
                                           .getTranslatedValue('epass'),
@@ -276,8 +311,13 @@ class _PatientSignupState extends State<PatientSignup> {
                                       }
                                       return null;
                                     },
-                                    onSaved: (String value) {
+                                    onSaved: (value) {
                                       password = value;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        password = value.trim();
+                                      });
                                     },
                                   ),
                                 ),
@@ -311,6 +351,7 @@ class _PatientSignupState extends State<PatientSignup> {
                                 ),
                                 Expanded(
                                   child: TextFormField(
+                                    obscureText: true,
                                     decoration: InputDecoration(
                                       hintText: DemoLocalization.of(context)
                                           .getTranslatedValue('econfirmpass'),
@@ -324,15 +365,15 @@ class _PatientSignupState extends State<PatientSignup> {
                                                 'confirmpassrequired');
                                       }
 
-                                      if (value != password) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue(
-                                                'confirmpassrequired');
-                                      }
                                       return null;
                                     },
                                     onSaved: (String value) {
                                       confirmPass = value;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        password = value.trim();
+                                      });
                                     },
                                   ),
                                 ),
@@ -373,6 +414,21 @@ class _PatientSignupState extends State<PatientSignup> {
                                           return;
                                         }
                                         _formkey.currentState.save();
+
+                                        auth
+                                            .createUserWithEmailAndPassword(
+                                          email: email,
+                                          password: password,
+                                        )
+                                            .then((_) {
+                                          sendVerificationEmail();
+                                          
+                                        });
+
+                                         timer = Timer.periodic(Duration(seconds: 10),
+                                              (timer) {
+                                                verifiedEmail();
+                                              });
                                       }),
                                 ),
                                 Container(
