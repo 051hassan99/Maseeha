@@ -1,56 +1,17 @@
-import 'dart:async';
+//import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fyp/Patient/AppUserData.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 import 'patient_login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 
-class PatientSignup extends StatefulWidget {
-  @override
-  _PatientSignupState createState() => _PatientSignupState();
-}
-
-class _PatientSignupState extends State<PatientSignup> {
-  final auth = FirebaseAuth.instance;
-  User user;
-  String name;
-  String email;
-  String address;
-  String password;
-  String confirmPass;
-  Timer timer;
-  var varified;
-
-  void sendVerificationEmail() async {
-    user = await auth.currentUser;
-
-    await user.sendEmailVerification();
-    Fluttertoast.showToast(msg: "email verfication link sent");
-  }
-
-  Future <void> verifiedEmail() async {
-    user = await auth.currentUser;
-    await user.reload();
-    varified = await user.emailVerified;
-
-
-    if (varified) {
-      timer.cancel();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PatientLogin()),
-      );
-    }
-
-    else{
-      print('EMAIL NOT VARIFIEDDDDDDDDD');
-    }
-  }
-
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+class PatientSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -97,7 +58,7 @@ class _PatientSignupState extends State<PatientSignup> {
                     vertical: 30.0,
                   ),
                   child: Form(
-                    key: _formkey,
+                    // key: _formkey,
                     child: ListView(
                       children: [
                         Container(
@@ -117,268 +78,297 @@ class _PatientSignupState extends State<PatientSignup> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: size.width / 9),
-                          child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(4),
-                            width: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xFFBC7C7C7),
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 60,
-                                  child: Icon(
-                                    Icons.account_circle,
-                                    size: 25,
-                                    color: Color(0xFFBB9B9B9),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: DemoLocalization.of(context)
-                                          .getTranslatedValue('efullname'),
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.all(10),
+                        Consumer<AppUserData>(
+                          builder: (_, appuserdata, child) {
+                            if (appuserdata.loading) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              return child;
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width / 9),
+                                child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(4),
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xFFBC7C7C7),
+                                      width: 2,
                                     ),
-                                    validator: (String value) {
-                                      if (value.isEmpty) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue('namerequired');
-                                      }
-                                      return null;
-                                    },
-                                    onSaved: (String value) {
-                                      name = value;
-                                    },
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        child: Icon(
+                                          Icons.account_circle,
+                                          size: 25,
+                                          color: Color(0xFFBB9B9B9),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                DemoLocalization.of(context)
+                                                    .getTranslatedValue(
+                                                        'efullname'),
+                                            border: InputBorder.none,
+                                            contentPadding: EdgeInsets.all(10),
+                                          ),
+                                          validator: (String value) {
+                                            if (value.isEmpty) {
+                                              return DemoLocalization.of(
+                                                      context)
+                                                  .getTranslatedValue(
+                                                      'namerequired');
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (String value) {
+                                            Provider.of<AppUserData>(context,
+                                                    listen: false)
+                                                .name = value;
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: size.width / 9),
-                          child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(4),
-                            width: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xFFBC7C7C7),
-                                width: 2,
                               ),
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 60,
-                                  child: Icon(
-                                    Icons.email,
-                                    size: 25,
-                                    color: Color(0xFFBB9B9B9),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: DemoLocalization.of(context)
-                                          .getTranslatedValue('eemail'),
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.all(10),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width / 9),
+                                child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(4),
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xFFBC7C7C7),
+                                      width: 2,
                                     ),
-                                    validator: (String value) {
-                                      if (value.isEmpty) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue(
-                                                'emailrequired');
-                                      }
-                                      if (!RegExp(
-                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                          .hasMatch(value)) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue(
-                                                'entervalidemail');
-                                      }
-                                      return null;
-                                    },
-                                    onSaved: (String value) {
-                                      email = value;
-                                    },
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        child: Icon(
+                                          Icons.email,
+                                          size: 25,
+                                          color: Color(0xFFBB9B9B9),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          decoration: InputDecoration(
+                                            hintText: DemoLocalization.of(
+                                                    context)
+                                                .getTranslatedValue('eemail'),
+                                            border: InputBorder.none,
+                                            contentPadding: EdgeInsets.all(10),
+                                          ),
+                                          validator: (String value) {
+                                            if (value.isEmpty) {
+                                              return DemoLocalization.of(
+                                                      context)
+                                                  .getTranslatedValue(
+                                                      'emailrequired');
+                                            }
+                                            if (!RegExp(
+                                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                                .hasMatch(value)) {
+                                              return DemoLocalization.of(
+                                                      context)
+                                                  .getTranslatedValue(
+                                                      'entervalidemail');
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (String value) {
+                                            Provider.of<AppUserData>(context,
+                                                    listen: false)
+                                                .email = value;
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: size.width / 9),
-                          child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(4),
-                            width: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xFFBC7C7C7),
-                                width: 2,
                               ),
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 60,
-                                  child: Icon(
-                                    Icons.home,
-                                    size: 25,
-                                    color: Color(0xFFBB9B9B9),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: DemoLocalization.of(context)
-                                          .getTranslatedValue('eaddress'),
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.all(10),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width / 9),
+                                child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(4),
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xFFBC7C7C7),
+                                      width: 2,
                                     ),
-                                    validator: (String value) {
-                                      if (value.isEmpty) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue(
-                                                'addressrequired');
-                                      }
-                                      return null;
-                                    },
-                                    onSaved: (String value) {
-                                      address = value;
-                                    },
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        child: Icon(
+                                          Icons.home,
+                                          size: 25,
+                                          color: Color(0xFFBB9B9B9),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          decoration: InputDecoration(
+                                            hintText: DemoLocalization.of(
+                                                    context)
+                                                .getTranslatedValue('eaddress'),
+                                            border: InputBorder.none,
+                                            contentPadding: EdgeInsets.all(10),
+                                          ),
+                                          validator: (String value) {
+                                            if (value.isEmpty) {
+                                              return DemoLocalization.of(
+                                                      context)
+                                                  .getTranslatedValue(
+                                                      'addressrequired');
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (String value) {
+                                            Provider.of<AppUserData>(context,
+                                                    listen: false)
+                                                .address = value;
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: size.width / 9),
-                          child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(4),
-                            width: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xFFBC7C7C7),
-                                width: 2,
                               ),
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 60,
-                                  child: Icon(
-                                    Icons.vpn_key,
-                                    size: 25,
-                                    color: Color(0xFFBB9B9B9),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: DemoLocalization.of(context)
-                                          .getTranslatedValue('epass'),
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.all(10),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width / 9),
+                                child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(4),
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xFFBC7C7C7),
+                                      width: 2,
                                     ),
-                                    validator: (String value) {
-                                      if (value.isEmpty) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue(
-                                                'passwordrequired');
-                                      }
-                                      return null;
-                                    },
-                                    onSaved: (value) {
-                                      password = value;
-                                    },
-                                    onChanged: (value) {
-                                      setState(() {
-                                        password = value.trim();
-                                      });
-                                    },
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        child: Icon(
+                                          Icons.vpn_key,
+                                          size: 25,
+                                          color: Color(0xFFBB9B9B9),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          obscureText: true,
+                                          decoration: InputDecoration(
+                                            hintText: DemoLocalization.of(
+                                                    context)
+                                                .getTranslatedValue('epass'),
+                                            border: InputBorder.none,
+                                            contentPadding: EdgeInsets.all(10),
+                                          ),
+                                          validator: (String value) {
+                                            if (value.isEmpty) {
+                                              return DemoLocalization.of(
+                                                      context)
+                                                  .getTranslatedValue(
+                                                      'passwordrequired');
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (value) {
+                                            Provider.of<AppUserData>(context,
+                                                    listen: false)
+                                                .password = value;
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: size.width / 9),
-                          child: Container(
-                            margin: EdgeInsets.all(10),
-                            padding: EdgeInsets.all(4),
-                            width: 300,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xFFBC7C7C7),
-                                width: 2,
                               ),
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 60,
-                                  child: Icon(
-                                    Icons.vpn_key,
-                                    size: 25,
-                                    color: Color(0xFFBB9B9B9),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: DemoLocalization.of(context)
-                                          .getTranslatedValue('econfirmpass'),
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.all(10),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width / 9),
+                                child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(4),
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xFFBC7C7C7),
+                                      width: 2,
                                     ),
-                                    validator: (String value) {
-                                      if (value.isEmpty) {
-                                        return DemoLocalization.of(context)
-                                            .getTranslatedValue(
-                                                'confirmpassrequired');
-                                      }
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        child: Icon(
+                                          Icons.vpn_key,
+                                          size: 25,
+                                          color: Color(0xFFBB9B9B9),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          obscureText: true,
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                DemoLocalization.of(context)
+                                                    .getTranslatedValue(
+                                                        'econfirmpass'),
+                                            border: InputBorder.none,
+                                            contentPadding: EdgeInsets.all(10),
+                                          ),
+                                          validator: (String value) {
+                                            if (value.isEmpty) {
+                                              return DemoLocalization.of(
+                                                      context)
+                                                  .getTranslatedValue(
+                                                      'confirmpassrequired');
+                                            }
 
-                                      return null;
-                                    },
-                                    onSaved: (String value) {
-                                      confirmPass = value;
-                                    },
-                                    onChanged: (value) {
-                                      setState(() {
-                                        password = value.trim();
-                                      });
-                                    },
+                                            return null;
+                                          },
+                                          onChanged: (String value) {
+                                            Provider.of<AppUserData>(context,
+                                                    listen: false)
+                                                .confirmPass = value;
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         FittedBox(
@@ -409,26 +399,19 @@ class _PatientSignupState extends State<PatientSignup> {
                                             fontSize: 18,
                                             color: Colors.white),
                                       ),
-                                      onPressed: () {
-                                        if (!_formkey.currentState.validate()) {
-                                          return;
+                                      onPressed: () async {
+                                        final variable =
+                                            await Provider.of<AppUserData>(
+                                                    context,
+                                                    listen: false)
+                                                .registerUser();
+                                        if (variable) {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                            builder: (context) =>
+                                                PatientLogin(),
+                                          ));
                                         }
-                                        _formkey.currentState.save();
-
-                                        auth
-                                            .createUserWithEmailAndPassword(
-                                          email: email,
-                                          password: password,
-                                        )
-                                            .then((_) {
-                                          sendVerificationEmail();
-                                          
-                                        });
-
-                                         timer = Timer.periodic(Duration(seconds: 10),
-                                              (timer) {
-                                                verifiedEmail();
-                                              });
                                       }),
                                 ),
                                 Container(

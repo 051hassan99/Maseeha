@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fyp/Patient/AppUserData.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'category.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 
 //abcs
 //mmm
@@ -37,32 +38,39 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: _locale,
-      supportedLocales: [Locale('en', 'US'), Locale('ur', 'PK')],
-      localizationsDelegates: [
-        DemoLocalization.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AppUserData(),
+        )
       ],
-      localeResolutionCallback: (deviceLocale, supportedLocales) {
-        for (var locale in supportedLocales) {
-          if (locale.languageCode == deviceLocale.languageCode &&
-              locale.countryCode == deviceLocale.countryCode) {
-            return deviceLocale;
+      child: MaterialApp(
+        locale: _locale,
+        supportedLocales: [Locale('en', 'US'), Locale('ur', 'PK')],
+        localizationsDelegates: [
+          DemoLocalization.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        ],
+        localeResolutionCallback: (deviceLocale, supportedLocales) {
+          for (var locale in supportedLocales) {
+            if (locale.languageCode == deviceLocale.languageCode &&
+                locale.countryCode == deviceLocale.countryCode) {
+              return deviceLocale;
+            }
           }
-        }
-        return supportedLocales.first;
-      },
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: bgcolor,
+          return supportedLocales.first;
+        },
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: bgcolor,
+        ),
+        home: Scaffold(
+            body: Container(
+          child: SplashScreen(),
+        )),
       ),
-      home: Scaffold(
-          body: Container(
-        child: SplashScreen(),
-      )),
     );
   }
 }
