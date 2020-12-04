@@ -7,7 +7,6 @@ import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-//import 'package:provider/provider.dart';
 import 'patient_login.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 

@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AppUserData(),
-        )
+        ),
       ],
       child: MaterialApp(
         locale: _locale,
