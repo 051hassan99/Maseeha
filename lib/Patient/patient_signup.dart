@@ -56,8 +56,23 @@ class PatientSignUp extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: 30.0,
                   ),
+
                   child: Form(
                     // key: _formkey,
+
+                  child: 
+                  Consumer<AppUserData>(
+                          builder: (_, appuserdata, child) {
+                            if (appuserdata.loading) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              return child;
+                            }
+                          },
+
+
                     child: ListView(
                       children: [
                         Container(
@@ -77,17 +92,8 @@ class PatientSignUp extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Consumer<AppUserData>(
-                          builder: (_, appuserdata, child) {
-                            if (appuserdata.loading) {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            } else {
-                              return child;
-                            }
-                          },
-                          child: Column(
+                        
+                          Column(
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -369,7 +375,7 @@ class PatientSignUp extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
+                        
                         FittedBox(
                           fit: BoxFit.contain,
                           child: Container(
@@ -451,6 +457,7 @@ class PatientSignUp extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
               ),
             ),
           ],

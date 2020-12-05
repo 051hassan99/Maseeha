@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/Patient/loginPatientData.dart';
 import 'package:fyp/Patient/patient_signup.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:provider/provider.dart';
 import 'patient_dashboard.dart';
 import 'package:fyp/Patient/signin_facebook.dart' as auth;
 import 'package:fyp/Patient/signin_google.dart' as googleauth;
 
-class PatientLogin extends StatefulWidget {
-  @override
-  _PatientLoginState createState() => _PatientLoginState();
-}
-
-class _PatientLoginState extends State<PatientLogin> {
+class PatientLogin extends StatelessWidget {
+  bool check;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,239 +57,306 @@ class _PatientLoginState extends State<PatientLogin> {
                   padding: const EdgeInsets.symmetric(
                     vertical: 30.0,
                   ),
-                  child: ListView(
-                    children: [
-                      Container(
-                        height: size.height / 15,
-                        margin: EdgeInsets.symmetric(
-                          vertical: size.height / 35,
-                        ),
-                        child: Center(
-                          child: Text(
-                            DemoLocalization.of(context)
-                                .getTranslatedValue('ltc'),
-                            style: GoogleFonts.rajdhani(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                      FittedBox(
-                        fit: BoxFit.contain,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: size.width / 2,
-                              padding: EdgeInsets.only(
-                                left: 20,
-                                right: 10,
-                                bottom: 10,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: FittedBox(
-                                fit: BoxFit.contain,
-                                child: SignInButton(
-                                  Buttons.Google,
-                                  text: DemoLocalization.of(context)
-                                      .getTranslatedValue('gmailtext'),
-                                  onPressed: () {
-                                    this.setState(() {
-                                      googleauth.abc.login(context);
-                                    });
-                                  },
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                right: 20,
-                                left: 10,
-                                bottom: 10,
-                              ),
-                              width: size.width / 2,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: FittedBox(
-                                fit: BoxFit.contain,
-                                child: SignInButton(
-                                  Buttons.FacebookNew,
-                                  text: DemoLocalization.of(context)
-                                      .getTranslatedValue('fbtext'),
-                                  onPressed: () {
-                                    this.setState(() {
-                                      auth.a.logInWithFb(context);
-                                    });
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width / 9),
-                        child: Container(
+                  child: Form(
+                    
+                    child: 
+                  Consumer<LoginPateintData>(
+                          builder: (_, loginpateintdata, child) {
+                            if (loginpateintdata.loading) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              return child;
+                            }
+                          },
+
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: size.height / 15,
                           margin: EdgeInsets.symmetric(
-                            vertical: size.height / 40,
+                            vertical: size.height / 35,
                           ),
-                          padding: EdgeInsets.all(4),
-                          width: 300,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFFBC7C7C7),
-                              width: 2,
+                          child: Center(
+                            child: Text(
+                              DemoLocalization.of(context)
+                                  .getTranslatedValue('ltc'),
+                              style: GoogleFonts.rajdhani(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                                color: Theme.of(context).primaryColor,
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(60),
                           ),
+                        ),
+                        FittedBox(
+                          fit: BoxFit.contain,
                           child: Row(
                             children: [
                               Container(
-                                width: 60,
-                                child: Icon(
-                                  Icons.account_circle,
-                                  size: 25,
-                                  color: Color(0xFFBB9B9B9),
-                                ),
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: DemoLocalization.of(context)
-                                        .getTranslatedValue('euser'),
-                                    border: InputBorder.none,
-                                    contentPadding: EdgeInsets.all(10),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width / 9),
-                        child: Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: size.height / 40,
-                          ),
-                          padding: EdgeInsets.all(4),
-                          width: 300,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFFBC7C7C7),
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(60),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 60,
-                                child: Icon(
-                                  Icons.vpn_key,
-                                  size: 25,
-                                  color: Color(0xFFBB9B9B9),
-                                ),
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: DemoLocalization.of(context)
-                                        .getTranslatedValue('epass'),
-                                    border: InputBorder.none,
-                                    contentPadding: EdgeInsets.all(10),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      FittedBox(
-                        fit: BoxFit.contain,
-                        child: Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: size.height / 40,
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
+                                width: size.width / 2,
+                                padding: EdgeInsets.only(
                                   left: 20,
+                                  right: 10,
+                                  bottom: 10,
                                 ),
-                                width: (size.width) / 3,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  borderRadius: BorderRadius.circular(80),
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
-                                child: FlatButton(
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    child: Text(
-                                      DemoLocalization.of(context)
-                                          .getTranslatedValue('signin'),
-                                      style: GoogleFonts.rajdhani(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                          color: Colors.white),
-                                    ),
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: SignInButton(
+                                    Buttons.Google,
+                                    text: DemoLocalization.of(context)
+                                        .getTranslatedValue('gmailtext'),
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                PatientDashboard()),
-                                      );
-                                    }),
+                                      
+                                        googleauth.abc.login(context);
+                                      
+                                    },
+                                  ),
+                                ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(
-                                  left: 10,
+                                padding: EdgeInsets.only(
                                   right: 20,
+                                  left: 10,
+                                  bottom: 10,
                                 ),
-                                width: ((size.width) * 1.5) / 3,
+                                width: size.width / 2,
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  borderRadius: BorderRadius.circular(80),
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
-                                child: FlatButton(
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    child: Text(
-                                      DemoLocalization.of(context)
-                                          .getTranslatedValue('newmember'),
-                                      style: GoogleFonts.rajdhani(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                          color: Colors.white),
-                                    ),
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: SignInButton(
+                                    Buttons.FacebookNew,
+                                    text: DemoLocalization.of(context)
+                                        .getTranslatedValue('fbtext'),
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                PatientSignUp()),
-                                      );
-                                    }),
+                                     
+                                        auth.a.logInWithFb(context);
+                                      
+                                    },
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: size.width / 9),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                              vertical: size.height / 40,
+                            ),
+                            padding: EdgeInsets.all(4),
+                            width: 300,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color(0xFFBC7C7C7),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(60),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  child: Icon(
+                                    Icons.email,
+                                    size: 25,
+                                    color: Color(0xFFBB9B9B9),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      hintText: DemoLocalization.of(context)
+                                          .getTranslatedValue('eemail'),
+                                      border: InputBorder.none,
+                                      contentPadding: EdgeInsets.all(10),
+                                    ),
+                                    validator: (String value) {
+                                      if (value.isEmpty) {
+                                        return DemoLocalization.of(context)
+                                            .getTranslatedValue(
+                                                'emailrequired');
+                                      }
+                                      return null;
+                                    },
+                                    onChanged: (String value) {
+                                      
+                                     Provider.of<LoginPateintData>(
+                                                context,
+                                                listen: false).email = value;
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: size.width / 9),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                              vertical: size.height / 40,
+                            ),
+                            padding: EdgeInsets.all(4),
+                            width: 300,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color(0xFFBC7C7C7),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(60),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  child: Icon(
+                                    Icons.vpn_key,
+                                    size: 25,
+                                    color: Color(0xFFBB9B9B9),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      hintText: DemoLocalization.of(context)
+                                          .getTranslatedValue('epass'),
+                                      border: InputBorder.none,
+                                      contentPadding: EdgeInsets.all(10),
+                                    ),
+                                    validator: (String value) {
+                                      if (value.isEmpty) {
+                                        return DemoLocalization.of(context)
+                                            .getTranslatedValue(
+                                                'passwordrequired');
+                                      }
+                                      return null;
+                                    },
+                                    onChanged: (String value) {
+                                     
+                                      Provider.of<LoginPateintData>(
+                                                context,
+                                                listen: false).password = value;
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        FittedBox(
+                          fit: BoxFit.contain,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                              vertical: size.height / 40,
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 20,
+                                  ),
+                                  width: (size.width) / 3,
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).primaryColor,
+                                    borderRadius: BorderRadius.circular(80),
+                                  ),
+                                  child: FlatButton(
+                                      splashColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      child: Text(
+                                        DemoLocalization.of(context)
+                                            .getTranslatedValue('signin'),
+                                        style: GoogleFonts.rajdhani(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                            color: Colors.white),
+                                      ),
+                                      onPressed: () async {
+
+                                        
+                                        final check = await Provider.of<LoginPateintData>(context,
+                                                listen: false)
+                                            .signUser();
+                                        if (check) 
+                                      {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    PatientDashboard()),
+                                          );
+                            
+                                        } 
+                                        else 
+                                        {
+                                          // print(Provider.of<LoginPateintData>(
+                                          //       context,
+                                          //       listen: false)
+                                          //   .check);
+                                    
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             PatientLogin()),
+                                        //   );
+                                        }  
+                                      }),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 20,
+                                  ),
+                                  width: ((size.width) * 1.5) / 3,
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).primaryColor,
+                                    borderRadius: BorderRadius.circular(80),
+                                  ),
+                                  child: FlatButton(
+                                      splashColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      child: Text(
+                                        DemoLocalization.of(context)
+                                            .getTranslatedValue('newmember'),
+                                        style: GoogleFonts.rajdhani(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                            color: Colors.white),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PatientSignUp()),
+                                        );
+                                      }),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ],
+            ),
+          ], 
         ),
       ),
     );

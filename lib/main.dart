@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fyp/Patient/AppUserData.dart';
+import 'package:fyp/Patient/loginPatientData.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,9 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AppUserData(),
+        ),
+         ChangeNotifierProvider(
+          create: (context) => LoginPateintData(),
         ),
       ],
       child: MaterialApp(
