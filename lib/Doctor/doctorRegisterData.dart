@@ -1,34 +1,38 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+class DoctorRegisterData extends ChangeNotifier{
 
-class AppUserData extends ChangeNotifier {
-  String name;
-  String email;
-  String address;
-  String password;
-  String confirmPass;
+  String docName;
+  String docEmail;
+  String hospital;
+  String pmdc;
+  String specialiozation;
+  String docAddress;
+  String docPassword;
+  String docConfirmPass;
   bool loading;
   bool securetext = true;
 
-  AppUserData() {
-    loading = false;
+DoctorRegisterData(){
+  loading = false;  
   }
 
-  void secureText() {
-    securetext = !securetext;
+void secureText(){
+    securetext =!securetext;
     notifyListeners();
   }
-
+  
   void toggleLoading() {
     loading = !loading;
     notifyListeners();
   }
 
-  void sendVerificationEmail() async {
+ void sendVerificationEmail() async {
     final auth = FirebaseAuth.instance;
     final user = auth.currentUser;
 
     await user.sendEmailVerification();
+
   }
 
   Future<bool> registerUser() async {
@@ -37,8 +41,8 @@ class AppUserData extends ChangeNotifier {
       toggleLoading();
       await auth
           .createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: docEmail,
+        password: docPassword,
       )
           .then((_) {
         sendVerificationEmail();
@@ -52,3 +56,4 @@ class AppUserData extends ChangeNotifier {
     return false;
   }
 }
+

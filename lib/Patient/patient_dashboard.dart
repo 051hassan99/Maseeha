@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fyp/Patient/main_drawer.dart';
-import 'package:fyp/Patient/patient_login.dart';
+import 'package:fyp/Patient/scheduleAppointment.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './main_drawer.dart';
+import 'package:fyp/Patient/main_drawer.dart';
 
-class PatientDashboard extends StatefulWidget {
-  @override
-  _PatientDashboardState createState() => _PatientDashboardState();
-}
-
-class _PatientDashboardState extends State<PatientDashboard> {
+class PatientDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -86,17 +80,21 @@ class _PatientDashboardState extends State<PatientDashboard> {
                   text: FlatButton(
                     child: Text(
                       DemoLocalization.of(context)
-                          .getTranslatedValue('setupmeet'),
+                          .getTranslatedValue('ScheduleAppointment'),
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PatientLogin()),
-                      );
+
+                       Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ScheduleAppointment()),
+                                              );
                     },
                   ),
+                  context: context,
                 ),
                 _buildCard(
                   icon: Icon(
@@ -105,24 +103,18 @@ class _PatientDashboardState extends State<PatientDashboard> {
                     color: _mainColor,
                   ),
                   text: FlatButton(
-                    child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('FindLocation'),
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PatientLogin()),
-                      );
-                    },
-                  ),
+                      child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('FindLocation'),
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {}),
+                  context: context,
                 ),
               ],
             ),
           ),
-          SizedBox(height: size.height / 50),
           FittedBox(
             fit: BoxFit.contain,
             child: Row(
@@ -141,13 +133,9 @@ class _PatientDashboardState extends State<PatientDashboard> {
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PatientLogin()),
-                      );
-                    },
+                    onPressed: () {},
                   ),
+                  context: context,
                 ),
                 _buildCard(
                   icon: Icon(
@@ -156,24 +144,18 @@ class _PatientDashboardState extends State<PatientDashboard> {
                     color: _mainColor,
                   ),
                   text: FlatButton(
-                    child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('TeleMedicine'),
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PatientLogin()),
-                      );
-                    },
-                  ),
+                      child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('TeleMedicine'),
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {}),
+                  context: context,
                 ),
               ],
             ),
           ),
-          SizedBox(height: size.height / 50),
           FittedBox(
             fit: BoxFit.contain,
             child: Row(
@@ -192,13 +174,9 @@ class _PatientDashboardState extends State<PatientDashboard> {
                       style:
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PatientLogin()),
-                      );
-                    },
+                    onPressed: () {},
                   ),
+                  context: context,
                 ),
                 _buildCard(
                   icon: Icon(
@@ -207,19 +185,14 @@ class _PatientDashboardState extends State<PatientDashboard> {
                     color: _mainColor,
                   ),
                   text: FlatButton(
-                    child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('RequestCaretaker'),
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PatientLogin()),
-                      );
-                    },
-                  ),
+                      child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('RequestCaretaker'),
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {}),
+                  context: context,
                 ),
               ],
             ),
@@ -246,14 +219,9 @@ class _PatientDashboardState extends State<PatientDashboard> {
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PatientLogin()),
-                        );
-                      },
+                      onPressed: () {},
                     ),
+                    context: context,
                   ),
                 ),
               ],
@@ -263,38 +231,39 @@ class _PatientDashboardState extends State<PatientDashboard> {
       ),
     );
   }
+}
 
-  Container _buildCard({final Icon icon, final FlatButton text}) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height / 3.3,
-      width: size.width / 1.6,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: EdgeInsets.all(16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: size.height / 11,
-            width: size.width / 5,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                width: 4,
-                color: Theme.of(context).primaryColor,
-              ),
+Container _buildCard(
+    {final Icon icon, final FlatButton text, BuildContext context}) {
+  Size size = MediaQuery.of(context).size;
+  return Container(
+    height: size.height / 3.3,
+    width: size.width / 1.6,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+    ),
+    padding: EdgeInsets.all(16),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: size.height / 11,
+          width: size.width / 5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              width: 4,
+              color: Theme.of(context).primaryColor,
             ),
-            child: icon,
           ),
-          Padding(
-            padding: EdgeInsets.all(size.width / 30),
-            child: text,
-          ),
-        ],
-      ),
-    );
-  }
+          child: icon,
+        ),
+        Padding(
+          padding: EdgeInsets.all(size.width / 30),
+          child: text,
+        ),
+      ],
+    ),
+  );
 }

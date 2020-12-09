@@ -136,6 +136,7 @@ class MainDrawer extends StatelessWidget {
                   auth.a.logout(context);
                 }
                 if (googleauth.abc.isGoogleLoggedIn) {
+                  print('abcdef');
                   googleauth.abc.logout(context);
                 }
               }),

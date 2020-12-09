@@ -1,4 +1,5 @@
 library maseeha.auth;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fyp/Patient/patient_dashboard.dart';
@@ -63,7 +64,6 @@ class _Auth {
     facebookLogin.logOut();
     isLoggedIn = false;
     takeToPatientLogIn(context);
-   
   }
 
   takeToPatientDashboard(BuildContext context) {

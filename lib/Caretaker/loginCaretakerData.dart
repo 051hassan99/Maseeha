@@ -1,14 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
-class LoginPatientData extends ChangeNotifier {
+class LoginCaretakerData extends ChangeNotifier {
   final auth = FirebaseAuth.instance;
-  String email;
-  String password;
+  String careEmail;
+  String carePassword;
   bool verified;
+
   bool loading;
 
-  LoginPatientData() {
+  LoginCaretakerData() {
     loading = false;
   }
 
@@ -27,7 +28,7 @@ class LoginPatientData extends ChangeNotifier {
     toggleLoading();
     try {
       await auth
-          .signInWithEmailAndPassword(email: email, password: password)
+          .signInWithEmailAndPassword(email: careEmail, password: carePassword)
           .then((_) async {
         final user = auth.currentUser;
         check = isEmailVerified(user);
@@ -37,8 +38,8 @@ class LoginPatientData extends ChangeNotifier {
       print(err.toString());
     }
     print('Email Verified Status After: $check');
-    print('Email : $email');
-    print('Password: $password');
+    print('Email : $careEmail');
+    print('Password: $carePassword');
     toggleLoading();
     return check;
   }

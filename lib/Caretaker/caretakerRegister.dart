@@ -1,16 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class AppUserData extends ChangeNotifier {
-  String name;
-  String email;
-  String address;
-  String password;
-  String confirmPass;
+class CaretakerRegisterData extends ChangeNotifier {
+  String careName;
+  String careEmail;
+  String careHospital;
+  String pnc;
+  String careAddress;
+  String carePassword;
+  String careConfirmPass;
   bool loading;
   bool securetext = true;
 
-  AppUserData() {
+  CaretakerRegisterData() {
     loading = false;
   }
 
@@ -37,8 +39,8 @@ class AppUserData extends ChangeNotifier {
       toggleLoading();
       await auth
           .createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: careEmail,
+        password: carePassword,
       )
           .then((_) {
         sendVerificationEmail();
