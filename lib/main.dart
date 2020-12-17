@@ -10,6 +10,7 @@ import 'package:fyp/splashScreen.dart';
 import 'package:provider/provider.dart';
 import 'Doctor/loginDoctorData.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fyp/Patient/newAppointmentdata.dart';
 
 //abcs
 //mmm
@@ -60,6 +61,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (context) => LoginCaretakerData(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => NewAppointmentData(),
         ),
       ],
       child: MaterialApp(

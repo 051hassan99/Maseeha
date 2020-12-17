@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:fyp/Patient/newAppointmentdata.dart';
 
 class NewAppointment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final newApponitmentData =
+        Provider.of<NewAppointmentData>(context, listen: false);
 
     return ListView(
       children: [
@@ -25,6 +29,97 @@ class NewAppointment extends StatelessWidget {
             ),
           ),
         ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 4.5,
+          ),
+          child: Text(
+            DemoLocalization.of(context).getTranslatedValue('gender'),
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 5,
+          ),
+          child: Row(
+            children: [
+              Consumer<NewAppointmentData>(
+                  builder: (context, newAppointmentData, _) {
+                return Radio(
+                  value: "Male",
+                  groupValue: newApponitmentData.gender,
+                  onChanged: (value) {
+                    newApponitmentData.genderChanged(value);
+                    print(newApponitmentData.gender);
+                  },
+                );
+              }),
+              Text('Male'),
+              Consumer<NewAppointmentData>(
+                  builder: (context, newAppointmentData, _) {
+                return Radio(
+                  value: "Female",
+                  groupValue: newApponitmentData.gender,
+                  onChanged: (value) {
+                    newApponitmentData.genderChanged(value);
+                    print(newApponitmentData.gender);
+                  },
+                );
+              }),
+              Text('Female'),
+            ],
+          ),
+        ),
+
+ SizedBox(height: size.height / 50),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 4.5,
+          ),
+          child: Text(
+            DemoLocalization.of(context).getTranslatedValue('appointmenttype'),
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 5,
+          ),
+          child: Row(
+            children: [
+              Consumer<NewAppointmentData>(
+                  builder: (context, newAppointmentData, _) {
+                return Radio(
+                  value: "Physical",
+                  groupValue: newApponitmentData.appointmenttype,
+                  onChanged: (value) {
+                    newApponitmentData.apponitmentChanged(value);
+                    print(newApponitmentData.appointmenttype);
+                  },
+                );
+              }),
+              Text('Physical'),
+              Consumer<NewAppointmentData>(
+                  builder: (context, newAppointmentData, _) {
+                return Radio(
+                  value: "Online",
+                  groupValue: newApponitmentData.appointmenttype,
+                  onChanged: (value) {
+                    newApponitmentData.apponitmentChanged(value);
+                    print(newApponitmentData.appointmenttype);
+                  },
+                );
+              }),
+              Text('Online'),
+            ],
+          ),
+        ),
+
         Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 9),
           child: Container(
@@ -88,7 +183,7 @@ class NewAppointment extends StatelessWidget {
                 Container(
                   width: 60,
                   child: Icon(
-                    Icons.account_circle,
+                    Icons.confirmation_number,
                     size: 25,
                     color: Color(0xFFBB9B9B9),
                   ),
@@ -134,8 +229,8 @@ class NewAppointment extends StatelessWidget {
                 minLines: 1,
                 maxLines: 5,
                 decoration: InputDecoration(
-                  hintText:
-                      DemoLocalization.of(context).getTranslatedValue('diseasedescription'),
+                  hintText: DemoLocalization.of(context)
+                      .getTranslatedValue('diseasedescription'),
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.all(10),
                 ),
@@ -144,61 +239,27 @@ class NewAppointment extends StatelessWidget {
             ),
           ),
         ),
-        FittedBox(
-          fit: BoxFit.contain,
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 3,
+          ),
           child: Container(
-            margin: EdgeInsets.symmetric(
-              vertical: size.height / 30,
+            width: 10,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.circular(50),
             ),
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                    left: 30,
-                  ),
-                  width: (size.width) / 3,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(80),
-                  ),
-                  child: FlatButton(
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      child: Text(
-                        DemoLocalization.of(context)
-                            .getTranslatedValue('signin'),
-                        style: GoogleFonts.rajdhani(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                      onPressed: () async {}),
+            child: FlatButton(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                child: Text(
+                  DemoLocalization.of(context).getTranslatedValue('signin'),
+                  style: GoogleFonts.rajdhani(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.white),
                 ),
-                Container(
-                  margin: EdgeInsets.only(
-                    left: 10,
-                    right: 20,
-                  ),
-                  width: ((size.width) * 1.5) / 3,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(80),
-                  ),
-                  child: FlatButton(
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      child: Text(
-                        DemoLocalization.of(context)
-                            .getTranslatedValue('newmember'),
-                        style: GoogleFonts.rajdhani(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                      onPressed: () {}),
-                ),
-              ],
-            ),
+                onPressed: () {}),
           ),
         ),
       ],
