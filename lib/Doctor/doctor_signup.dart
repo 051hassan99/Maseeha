@@ -382,7 +382,7 @@ class DoctorSignup extends StatelessWidget {
                                             contentPadding: EdgeInsets.all(10),
                                             suffixIcon: IconButton(
                                               icon: Icon(
-                                                Icons.remove_red_eye_rounded,
+                                                Icons.remove_red_eye,
                                                 color: Color(0xFFBB9B9B9),
                                               ),
                                               onPressed: () {
@@ -449,7 +449,7 @@ class DoctorSignup extends StatelessWidget {
                                             contentPadding: EdgeInsets.all(10),
                                             suffixIcon: IconButton(
                                               icon: Icon(
-                                                Icons.remove_red_eye_rounded,
+                                                Icons.remove_red_eye,
                                                 color: Color(0xFFBB9B9B9),
                                               ),
                                               onPressed: () {
@@ -516,10 +516,23 @@ class DoctorSignup extends StatelessWidget {
                                               fontSize: 18,
                                               color: Colors.white),
                                         ),
-                                        onPressed: () {
-                                          if (!_formkey.currentState
-                                              .validate()) {
-                                            return;
+                                        onPressed: () async {
+                                          // if (!_formkey.currentState
+                                          //     .validate()) {
+                                          print('here on connect!');
+
+                                          final resultVariable =
+                                              await doctorRegisterData
+                                                  .appConnect();
+                                          if (resultVariable) {
+                                            print('true');
+
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DoctorLogin()),
+                                            );
                                           }
                                         }),
                                   ),

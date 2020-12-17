@@ -209,7 +209,7 @@ class DoctorLogin extends StatelessWidget {
                                             contentPadding: EdgeInsets.all(10),
                                             suffixIcon: IconButton(
                                               icon: Icon(
-                                                Icons.remove_red_eye_rounded,
+                                                Icons.remove_red_eye,
                                                 color: Color(0xFFBB9B9B9),
                                               ),
                                               onPressed: () {
