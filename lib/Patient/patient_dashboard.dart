@@ -11,211 +11,127 @@ class PatientDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     var _mainColor = Theme.of(context).primaryColor;
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(
-            right: size.width / 30,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                width: size.width * 0.28,
-                child: Center(
-                  child: Text(
-                    DemoLocalization.of(context).getTranslatedValue('title'),
-                    style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.bold,
+    return WillPopScope(
+      onWillPop: () {
+        return new Future(() => false);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Padding(
+            padding: EdgeInsets.only(
+              right: size.width / 30,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: size.width * 0.28,
+                  child: Center(
+                    child: Text(
+                      DemoLocalization.of(context).getTranslatedValue('title'),
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(
+                  left: size.width / 30,
+                  right: size.width / 30,
+                ),
+                child: LangSelector()),
+          ],
         ),
-        actions: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(
-                left: size.width / 30,
-                right: size.width / 30,
-              ),
-              child: LangSelector()),
-        ],
-      ),
-      drawer: MainDrawer(),
-      body: ListView(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: size.height / 35,
-                  bottom: size.width / 30,
-                ),
-                child: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('patientdashboard'),
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          FittedBox(
-            fit: BoxFit.contain,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildCard(
-                  icon: Icon(
-                    FontAwesome.calendar,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                    child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('ScheduleAppointment'),
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-
-                       Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ScheduleAppointment()),
-                                              );
-                    },
-                  ),
-                  context: context,
-                ),
-                _buildCard(
-                  icon: Icon(
-                    Entypo.location_pin,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                        DemoLocalization.of(context)
-                            .getTranslatedValue('FindLocation'),
-                        style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () {}),
-                  context: context,
-                ),
-              ],
-            ),
-          ),
-          FittedBox(
-            fit: BoxFit.contain,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildCard(
-                  icon: Icon(
-                    Icons.notification_important,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                    child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('MedicineAlerts'),
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {},
-                  ),
-                  context: context,
-                ),
-                _buildCard(
-                  icon: Icon(
-                    Entypo.video_camera,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                        DemoLocalization.of(context)
-                            .getTranslatedValue('TeleMedicine'),
-                        style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () {}),
-                  context: context,
-                ),
-              ],
-            ),
-          ),
-          FittedBox(
-            fit: BoxFit.contain,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildCard(
-                  icon: Icon(
-                    Feather.shopping_cart,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                    child: Text(
-                      DemoLocalization.of(context)
-                          .getTranslatedValue('BuyDrugsOnline'),
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {},
-                  ),
-                  context: context,
-                ),
-                _buildCard(
-                  icon: Icon(
-                    Icons.person,
-                    size: 30,
-                    color: _mainColor,
-                  ),
-                  text: FlatButton(
-                      child: Text(
-                        DemoLocalization.of(context)
-                            .getTranslatedValue('RequestCaretaker'),
-                        style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () {}),
-                  context: context,
-                ),
-              ],
-            ),
-          ),
-          FittedBox(
-            fit: BoxFit.contain,
-            child: Row(
+        drawer: MainDrawer(),
+        body: ListView(
+          children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: size.width / 4,
+                Container(
+                  margin: EdgeInsets.only(
+                    top: size.height / 35,
+                    bottom: size.width / 30,
                   ),
-                  child: _buildCard(
+                  child: Text(
+                    DemoLocalization.of(context)
+                        .getTranslatedValue('patientdashboard'),
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            FittedBox(
+              fit: BoxFit.contain,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildCard(
                     icon: Icon(
-                      MaterialIcons.healing,
+                      FontAwesome.calendar,
                       size: 30,
                       color: _mainColor,
                     ),
                     text: FlatButton(
                       child: Text(
                         DemoLocalization.of(context)
-                            .getTranslatedValue('healthylifestyle'),
+                            .getTranslatedValue('ScheduleAppointment'),
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ScheduleAppointment()),
+                        );
+                      },
+                    ),
+                    context: context,
+                  ),
+                  _buildCard(
+                    icon: Icon(
+                      Entypo.location_pin,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                          DemoLocalization.of(context)
+                              .getTranslatedValue('FindLocation'),
+                          style: TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {}),
+                    context: context,
+                  ),
+                ],
+              ),
+            ),
+            FittedBox(
+              fit: BoxFit.contain,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildCard(
+                    icon: Icon(
+                      Icons.notification_important,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                      child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('MedicineAlerts'),
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.bold),
                       ),
@@ -223,11 +139,98 @@ class PatientDashboard extends StatelessWidget {
                     ),
                     context: context,
                   ),
-                ),
-              ],
+                  _buildCard(
+                    icon: Icon(
+                      Entypo.video_camera,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                          DemoLocalization.of(context)
+                              .getTranslatedValue('TeleMedicine'),
+                          style: TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {}),
+                    context: context,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            FittedBox(
+              fit: BoxFit.contain,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildCard(
+                    icon: Icon(
+                      Feather.shopping_cart,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                      child: Text(
+                        DemoLocalization.of(context)
+                            .getTranslatedValue('BuyDrugsOnline'),
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {},
+                    ),
+                    context: context,
+                  ),
+                  _buildCard(
+                    icon: Icon(
+                      Icons.person,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                          DemoLocalization.of(context)
+                              .getTranslatedValue('RequestCaretaker'),
+                          style: TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {}),
+                    context: context,
+                  ),
+                ],
+              ),
+            ),
+            FittedBox(
+              fit: BoxFit.contain,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: size.width / 4,
+                    ),
+                    child: _buildCard(
+                      icon: Icon(
+                        MaterialIcons.healing,
+                        size: 30,
+                        color: _mainColor,
+                      ),
+                      text: FlatButton(
+                        child: Text(
+                          DemoLocalization.of(context)
+                              .getTranslatedValue('healthylifestyle'),
+                          style: TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {},
+                      ),
+                      context: context,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

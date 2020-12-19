@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fyp/Caretaker/caretakerRegister.dart';
 import 'package:fyp/Caretaker/loginCaretakerData.dart';
+import 'package:fyp/Doctor/bmiContainer_Data.dart';
+import 'package:fyp/Doctor/bmrContainerData.dart';
+import 'package:fyp/Doctor/upeeContainerData.dart';
 import 'package:fyp/Patient/AppUserData.dart';
 import 'package:fyp/Patient/loginPatientData.dart';
 import 'package:fyp/Doctor/doctorRegisterData.dart';
@@ -65,6 +68,16 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => NewAppointmentData(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => BMIContainerData(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UPEEContainerData(),
+        ),
+
+         ChangeNotifierProvider(
+          create: (context) => BMRContainerData(),
+        ),
       ],
       child: MaterialApp(
         locale: _locale,
@@ -87,7 +100,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: bgcolor,
-        
         ),
         home: Scaffold(
             body: Container(

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fyp/Caretaker/caretaker_drawer.dart';
-
 import 'package:fyp/Patient/doctorList.dart';
+import 'package:fyp/Patient/main_drawer.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ScheduleAppointment extends StatelessWidget {
-
-
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -45,7 +41,7 @@ class ScheduleAppointment extends StatelessWidget {
               child: LangSelector()),
         ],
       ),
-      drawer: CaretakerDrawer(),
+      drawer: MainDrawer(),
       body: ListView(
         children: [
           Row(
@@ -69,12 +65,8 @@ class ScheduleAppointment extends StatelessWidget {
             ],
           ),
           SizedBox(height: size.height / 50),
-         
           DoctorList(),
-
         ],
-
-
       ),
     );
   }

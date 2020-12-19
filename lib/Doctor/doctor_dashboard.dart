@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/Doctor/right_hand_toDoctor.dart';
 import 'package:fyp/Patient/scheduleAppointment.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
@@ -11,169 +12,182 @@ class DoctorDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     var _mainColor = Theme.of(context).primaryColor;
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(
-            right: size.width / 30,
+    return WillPopScope(
+          onWillPop: (){
+              return new Future (() => false);
+          },
+          child: Scaffold(
+        appBar: AppBar(
+          title: Padding(
+            padding: EdgeInsets.only(
+              right: size.width / 30,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: size.width * 0.28,
+                  child: Center(
+                    child: Text(
+                      DemoLocalization.of(context).getTranslatedValue('title'),
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                width: size.width * 0.28,
-                child: Center(
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(
+                  left: size.width / 30,
+                  right: size.width / 30,
+                ),
+                child: LangSelector()),
+          ],
+        ),
+        drawer: DoctorDrawer(),
+        body: ListView(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    top: size.height / 35,
+                    bottom: size.width / 30,
+                  ),
                   child: Text(
-                    DemoLocalization.of(context).getTranslatedValue('title'),
+                    DemoLocalization.of(context)
+                        .getTranslatedValue('doctordashboard'),
                     style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 25,
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(
-                left: size.width / 30,
-                right: size.width / 30,
-              ),
-              child: LangSelector()),
-        ],
-      ),
-      drawer: DoctorDrawer(),
-      body: ListView(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: size.height / 35,
-                  bottom: size.width / 30,
-                ),
-                child: Text(
-                  DemoLocalization.of(context)
-                      .getTranslatedValue('doctordashboard'),
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 70,
-              ),
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: _buildCard(
-                icon: Icon(
-                  FontAwesome.calendar,
-                  size: 30,
-                  color: _mainColor,
-                ),
-                text: FlatButton(
-                  child: Text(
-                    DemoLocalization.of(context)
-                        .getTranslatedValue('ManageAppointment'),
-                    style:
-                        TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ScheduleAppointment()),
-                    );
-                  },
-                ),
-                context: context,
-              ),
+              ],
             ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 70,
-            ),
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: _buildCard(
-                icon: Icon(
-                  Icons.person,
-                  size: 30,
-                  color: _mainColor,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 70,
                 ),
-                text: FlatButton(
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: _buildCard(
+                  icon: Icon(
+                    FontAwesome.calendar,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
                     child: Text(
                       DemoLocalization.of(context)
-                          .getTranslatedValue('ViewPatients'),
-                      style: TextStyle(
-                          fontSize: 13, fontWeight: FontWeight.bold),
+                          .getTranslatedValue('ManageAppointment'),
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {}),
-                context: context,
-              ),
-            ),
-          ),
-
-          Padding(
-             padding: EdgeInsets.symmetric(
-              horizontal: 70,
-            ),
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: _buildCard(
-                icon: Icon(
-                  Icons.calculate_outlined,
-                  size: 30,
-                  color: _mainColor,
-                ),
-                text: FlatButton(
-                  child: Text(
-                    DemoLocalization.of(context)
-                        .getTranslatedValue('DoctorAssistant'),
-                    style:
-                        TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScheduleAppointment()),
+                      );
+                    },
                   ),
-                  onPressed: () {},
+                  context: context,
                 ),
-                context: context,
               ),
             ),
-          ),
 
-          Padding(
-             padding: EdgeInsets.symmetric(
-              horizontal: 70,
-            ),
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child:  _buildCard(
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 70,
+              ),
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: _buildCard(
                   icon: Icon(
-                    Entypo.video_camera,
+                    Icons.person,
                     size: 30,
                     color: _mainColor,
                   ),
                   text: FlatButton(
                       child: Text(
                         DemoLocalization.of(context)
-                            .getTranslatedValue('TeleMedicine'),
+                            .getTranslatedValue('ViewPatients'),
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {}),
                   context: context,
                 ),
+              ),
             ),
-          ),
-        ],
+
+            Padding(
+               padding: EdgeInsets.symmetric(
+                horizontal: 70,
+              ),
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: _buildCard(
+                  icon: Icon(
+                    Icons.calculate_outlined,
+                    size: 30,
+                    color: _mainColor,
+                  ),
+                  text: FlatButton(
+                    child: Text(
+                      DemoLocalization.of(context)
+                          .getTranslatedValue('DoctorAssistant'),
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    RightHandToDoctor()),
+                          );
+
+                    },
+                  ),
+                  context: context,
+                ),
+              ),
+            ),
+
+            Padding(
+               padding: EdgeInsets.symmetric(
+                horizontal: 70,
+              ),
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child:  _buildCard(
+                    icon: Icon(
+                      Entypo.video_camera,
+                      size: 30,
+                      color: _mainColor,
+                    ),
+                    text: FlatButton(
+                        child: Text(
+                          DemoLocalization.of(context)
+                              .getTranslatedValue('TeleMedicine'),
+                          style: TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {}),
+                    context: context,
+                  ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
