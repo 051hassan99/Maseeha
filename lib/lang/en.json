@@ -61,5 +61,7 @@
     "age":"Enter your Age",
     "gender":"Select your Gender",
     "appointmenttype":"Select Appointment Type",
-    "diseasedescription":"Write About Your diseacse[optional]"
+    "diseasedescription":"Write About Your diseacse[optional]",
+    "patientcustodian":"Patient's Custodian"
+
 }

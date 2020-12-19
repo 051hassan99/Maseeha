@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/Doctor/doctorRegisterData.dart';
+import 'package:fyp/doctor_db_class.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../db_helper.dart';
 import 'doctor_login.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 class DoctorSignup extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
+
+  List<DoctorDb> doctors;
+  DBHelper dbHelper = DBHelper();
+
+  refreshDoctorList() async {
+    doctors = await dbHelper.getdoctor();
+
+    for (final doctor in doctors) {
+      print(doctor.id);
+      print(doctor.name);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -489,87 +503,96 @@ class DoctorSignup extends StatelessWidget {
                             ),
                           ),
                           FittedBox(
-                            fit: BoxFit.contain,
-                            child: Container(
-                              margin: EdgeInsets.symmetric(
-                                vertical: 20,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                      left: 20,
-                                    ),
-                                    width: (size.width) / 3,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.circular(80),
-                                    ),
-                                    child: FlatButton(
-                                        splashColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        child: Text(
-                                          DemoLocalization.of(context)
-                                              .getTranslatedValue('signup'),
-                                          style: GoogleFonts.rajdhani(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                              color: Colors.white),
-                                        ),
-                                        onPressed: () async {
-                                          // if (!_formkey.currentState
-                                          //     .validate()) {
-                                          print('here on connect!');
-
-                                          final resultVariable =
-                                              await doctorRegisterData
-                                                  .appConnect();
-                                          if (resultVariable) {
-                                            print('true');
-
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DoctorLogin()),
-                                            );
-                                          }
-                                        }),
+                              fit: BoxFit.contain,
+                              child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                    vertical: 20,
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                      left: 10,
-                                      right: 20,
-                                    ),
-                                    width: ((size.width) * 1.5) / 3,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.circular(80),
-                                    ),
-                                    child: FlatButton(
-                                        splashColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        child: Text(
-                                          DemoLocalization.of(context)
-                                              .getTranslatedValue(
-                                                  'backtologin'),
-                                          style: GoogleFonts.rajdhani(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                              color: Colors.white),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    DoctorLogin()),
-                                          );
-                                        }),
-                                  ),
-                                ],
-                              ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          margin: EdgeInsets.only(
+                                            left: 20,
+                                          ),
+                                          width: (size.width) / 3,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(80),
+                                          ),
+                                          child: FlatButton(
+                                              splashColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              child: Text(
+                                                DemoLocalization.of(context)
+                                                    .getTranslatedValue(
+                                                        'signup'),
+                                                style: GoogleFonts.rajdhani(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18,
+                                                    color: Colors.white),
+                                              ),
+                                              onPressed: () async {
+                                                // if (!_formkey.currentState
+                                                //     .validate()) {
+                                                print('here on connect!');
+                                                final resultVariable =
+                                                    await doctorRegisterData
+                                                        .appConnect();
+                                                if (resultVariable) {
+                                                  print('true');
+                                                }
+
+                                                //DATABASE
+                                                // final doctor = await dbHelper.add(
+                                                //     DoctorDb(
+                                                //         null,
+                                                //         doctorRegisterData
+                                                //             .docName));
+                                                // print(doctor.id);
+                                                // print(doctor.name);
+                                                // refreshDoctorList();
+                                                // print(doctors);
+
+                                                // Navigator.push(
+                                                //   context,
+                                                //   MaterialPageRoute(
+                                                //       builder: (context) =>
+                                                //           DoctorLogin()),
+                                                //);
+                                              }))
+                                    ],
+                                  ))),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: 10,
+                              right: 20,
                             ),
+                            width: ((size.width) * 1.5) / 3,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(80),
+                            ),
+                            child: FlatButton(
+                                splashColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                child: Text(
+                                  DemoLocalization.of(context)
+                                      .getTranslatedValue('backtologin'),
+                                  style: GoogleFonts.rajdhani(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Colors.white),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DoctorLogin()),
+                                  );
+                                }),
                           ),
                         ],
                       ),

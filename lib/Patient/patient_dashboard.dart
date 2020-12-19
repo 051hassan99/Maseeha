@@ -85,13 +85,11 @@ class PatientDashboard extends StatelessWidget {
                           TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
-
-                       Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ScheduleAppointment()),
-                                              );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScheduleAppointment()),
+                      );
                     },
                   ),
                   context: context,

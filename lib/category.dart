@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/Patient/patient_custodian.dart';
 import 'package:fyp/Patient/patient_login.dart';
 import 'package:fyp/Doctor/doctor_login.dart';
 import 'package:fyp/Caretaker/caretaker_login.dart';
@@ -156,7 +157,7 @@ class Category extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CaretakerLogin()),
+                                      builder: (context) => PatientCustodian()),
                                 );
                               }),
                         ),

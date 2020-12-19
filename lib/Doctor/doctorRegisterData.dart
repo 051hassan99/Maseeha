@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 
 class DoctorRegisterData extends ChangeNotifier {
+  int id;
   String docName;
   String docEmail;
   String hospital;
@@ -66,13 +67,26 @@ class DoctorRegisterData extends ChangeNotifier {
   Future<bool> appConnect() async {
     var data =
         await getData('http://10.0.2.2:5000/?pmdc=$pmdc&docName=$docName');
-    sleep(const Duration(seconds: 5));
+    // sleep(const Duration(seconds: 5));
     var decodedData = jsonDecode(data);
     if (decodedData['query'] == 'true') {
       return true;
     } else {
       return false;
     }
-    //print(decodedData['query']);
+  }
+
+  //DATABASE
+  Map<String, dynamic> toMap() {
+    var map = <String, dynamic>{
+      'id': id,
+      'name': docName,
+    };
+    return map;
+  }
+
+  DoctorRegisterData.fromMap(Map<String, dynamic> map) {
+    id = map['id'];
+    docName = map['name'];
   }
 }
