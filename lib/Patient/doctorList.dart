@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/Doctor/doctorsdata.dart';
 import 'package:fyp/Patient/newAppointment.dart';
+//import 'package:path/path.dart';
 
 class DoctorList extends StatelessWidget {
   final List<Doctor> doctorlist = [
@@ -42,19 +43,18 @@ class DoctorList extends StatelessWidget {
         specialization: "Orthopedic"),
   ];
 
-
-
-  void takeAppointment(ctx){
-
-        showModalBottomSheet(context: ctx, builder: (BuildContext bc){
-                   return NewAppointment();
-              }
-          );
-
-  }
+  
 
   @override
   Widget build(BuildContext context) {
+
+    void takeAppointment(ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (context) {
+          return NewAppointment();
+        });
+  }
     Size size = MediaQuery.of(context).size;
     return Container(
       child: doctorlist.isEmpty
@@ -90,7 +90,8 @@ class DoctorList extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    image: NetworkImage('https://www.google.com/url?sa=i&url=https://flutterappworld.com/a-high-performance-flutter-widget-to-render-bottts-svg-avatars/&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'),
+                                    image: NetworkImage(
+                                        'https://www.google.com/url?sa=i&url=https://flutterappworld.com/a-high-performance-flutter-widget-to-render-bottts-svg-avatars/&psig=AOvVaw0pbd2aLdtAYDPZSY8ZCbFK&ust=1605966714142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODx_sSike0CFQAAAAAdAAAAABAJ'),
                                   ),
                                   border: Border.all(
                                     color: Theme.of(context).primaryColor,
@@ -132,14 +133,13 @@ class DoctorList extends StatelessWidget {
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
-                                            color:Theme.of(context).primaryColor 
-                                            ),
+                                            color:
+                                                Theme.of(context).primaryColor),
                                       ),
                                       onPressed: () {
-                                        try{
-                                        takeAppointment(context);
-                                        }
-                                        catch(err){
+                                        try {
+                                          takeAppointment(context);
+                                        } catch (err) {
                                           print(err.toString());
                                         }
                                       },

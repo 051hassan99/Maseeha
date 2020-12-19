@@ -62,6 +62,14 @@
     "gender":"Select your Gender",
     "appointmenttype":"Select Appointment Type",
     "diseasedescription":"Write About Your diseacse[optional]",
-    "patientcustodian":"Patient's Custodian"
+    "BMI":"Calculate BMI",
+    "BMR":"Basal Metabolic Rate",
+    "UPEE":"Urinary Protien Excretion Estimation",
+    "EnterYourHeight":"Enter Your Height Below",
+    "HeightInFeet":"Enter Feet here",
+    "HeightInInc":"Enter Inch here",
+    "mass":"Enter Weight here",
+    "SUP":"Spot Urine Protien",
+    "SUC":"Spot Urine Create"
 
 }

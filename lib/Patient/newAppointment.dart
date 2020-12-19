@@ -10,7 +10,7 @@ class NewAppointment extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     final newApponitmentData =
         Provider.of<NewAppointmentData>(context, listen: false);
-
+       
     return ListView(
       children: [
         Container(
@@ -73,8 +73,7 @@ class NewAppointment extends StatelessWidget {
             ],
           ),
         ),
-
- SizedBox(height: size.height / 50),
+        SizedBox(height: size.height / 50),
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: size.width / 4.5,
@@ -119,7 +118,6 @@ class NewAppointment extends StatelessWidget {
             ],
           ),
         ),
-
         Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 9),
           child: Container(

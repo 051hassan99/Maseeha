@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:fyp/Doctor/bmrContainerData.dart';
+import 'package:fyp/Doctor/upeeContainerData.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class BMRContainer extends StatelessWidget {
+class UPEEContainer extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
+
   final _a = TextEditingController();
-  final _b = TextEditingController();
   final _c = TextEditingController();
-  final _d = TextEditingController();
-//
+
   @override
   Widget build(BuildContext context) {
-  
+  final upeeData = Provider.of<UPEEContainerData>(context, listen: false);
 
     Size size = MediaQuery.of(context).size;
-    final bmrData = Provider.of<BMRContainerData>(context, listen: false);
+    
     return Form(
       key: _formkey,
       child: ListView(
@@ -28,7 +27,7 @@ class BMRContainer extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                DemoLocalization.of(context).getTranslatedValue('BMR'),
+                DemoLocalization.of(context).getTranslatedValue('UPEE'),
                 style: GoogleFonts.rajdhani(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
@@ -38,43 +37,8 @@ class BMRContainer extends StatelessWidget {
             ),
           ),
           SizedBox(height: size.height / 50),
-
           Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: size.width / 5,
-          ),
-          child: Row(
-            children: [
-              Consumer<BMRContainerData>(
-                  builder: (context, bmrData, _) {
-                return Radio(
-                  value: "Male",
-                  groupValue: bmrData.gender,
-                  onChanged: (value) {
-                    bmrData.genderChanged(value);
-                    print(bmrData.gender);
-                  },
-                );
-              }),
-              Text('Male'),
-              Consumer<BMRContainerData>(
-                  builder: (context, bmrData, _) {
-                return Radio(
-                  value: "Female",
-                  groupValue: bmrData.gender,
-                  onChanged: (value) {
-                    bmrData.genderChanged(value);
-                    print(bmrData.gender);
-                  },
-                );
-              }),
-              Text('Female'),
-            ],
-          ),
-        ),
-        SizedBox(height: size.height / 50),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width / 9),
+            padding: EdgeInsets.symmetric(horizontal: size.width / 5),
             child: Container(
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(4),
@@ -86,56 +50,34 @@ class BMRContainer extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(50),
               ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      controller: _a,
-                      decoration: InputDecoration(
-                        hintText: DemoLocalization.of(context)
-                            .getTranslatedValue('HeightInFeet'),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(10),
-                      ),
-                      validator: (String value) {
-                        if (value.isEmpty) {
-                          return DemoLocalization.of(context)
-                              .getTranslatedValue('HeightInFeet');
-                        }
-                        return null;
-                      },
-                      onChanged: (String value) {
-                        bmrData.feet = int.parse(value);
-                      },
-                    ),
+              child: Container(
+                padding: EdgeInsets.only(
+                  left: 20,
+                ),
+                child: TextFormField(
+                  controller: _a,
+                  decoration: InputDecoration(
+                    hintText: DemoLocalization.of(context)
+                        .getTranslatedValue('SUP'),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.all(10),
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      controller: _b,
-                      decoration: InputDecoration(
-                        hintText: DemoLocalization.of(context)
-                            .getTranslatedValue('HeightInInc'),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(10),
-                      ),
-                      validator: (String value) {
-                        if (value.isEmpty) {
-                          return DemoLocalization.of(context)
-                              .getTranslatedValue('HeightInInc');
-                        }
-                        return null;
-                      },
-                      onChanged: (String value) {
-                        bmrData.inch = int.parse(value);
-                      },
-                    ),
-                  ),
-                ],
+                  validator: (String value) {
+                    if (value.isEmpty) {
+                      return DemoLocalization.of(context)
+                          .getTranslatedValue('SUP');
+                    }
+                    return null;
+                  },
+                  onChanged: (String value) {
+                   upeeData.sup =double.parse(value);
+                  },
+                ),
               ),
             ),
           ),
-          SizedBox(height: size.height / 80),
-           Padding(
+         SizedBox(height: size.height / 50),
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width / 5),
             child: Container(
               margin: EdgeInsets.all(10),
@@ -156,60 +98,19 @@ class BMRContainer extends StatelessWidget {
                   controller: _c,
                   decoration: InputDecoration(
                     hintText: DemoLocalization.of(context)
-                        .getTranslatedValue('mass'),
+                        .getTranslatedValue('SUC'),
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.all(10),
                   ),
                   validator: (String value) {
                     if (value.isEmpty) {
                       return DemoLocalization.of(context)
-                          .getTranslatedValue('mass');
+                          .getTranslatedValue('SUC');
                     }
                     return null;
                   },
                   onChanged: (String value) {
-                   bmrData.mass =double.parse(value);
-                  },
-                ),
-              ),
-            ),
-          ),
-
-          SizedBox(height: size.height / 80),
-           Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width / 5),
-            child: Container(
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(4),
-              width: 300,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color(0xFFBC7C7C7),
-                  width: 2,
-                ),
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 20,
-                ),
-                child: TextFormField(
-                  controller: _d,
-                  decoration: InputDecoration(
-                    hintText: DemoLocalization.of(context)
-                        .getTranslatedValue('age'),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(10),
-                  ),
-                  validator: (String value) {
-                    if (value.isEmpty) {
-                      return DemoLocalization.of(context)
-                          .getTranslatedValue('age');
-                    }
-                    return null;
-                  },
-                  onChanged: (String value) {
-                   bmrData.age =int.parse(value);
+                   upeeData.suc =double.parse(value);
                   },
                 ),
               ),
@@ -236,15 +137,15 @@ class BMRContainer extends StatelessWidget {
                         return;
                       } else {
                         _formkey.currentState.save();
+                        upeeData.resultofCalculation(upeeData.sup, upeeData.suc);
                         
-                        bmrData.calculateResult();
                       }
                     },
                   ),
                 ),
                 Expanded(
-                  child: Consumer<BMRContainerData>(
-                      builder: (context, bmrData, _) {
+                  child: Consumer<UPEEContainerData>(
+                      builder: (context, upeeData, _) {
                     return Container(
                       height: 50,
                       decoration: BoxDecoration(
@@ -255,7 +156,7 @@ class BMRContainer extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      child: Center(child: Text(bmrData.myFinalResult,
+                      child: Center(child: Text(upeeData.myFinalResult,
                       style: TextStyle(
                         fontSize : 18,
                         fontWeight: FontWeight.bold,
@@ -280,11 +181,8 @@ class BMRContainer extends StatelessWidget {
                     ),
                     onPressed: () {
                       _a.clear();
-                      _b.clear();
                       _c.clear();
-                      _d.clear();
-
-                      bmrData.clearValues();
+                      upeeData.clearValues();
                     
                     },
                   ),
