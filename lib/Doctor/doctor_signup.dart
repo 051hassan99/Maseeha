@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fyp/Doctor/doctorRegisterData.dart';
-//import 'package:fyp/doctor_db_class.dart';
+import 'package:fyp/doctor_db_class.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import '../db_helper.dart';
+import '../db_helper.dart';
+import '../doctor_db_class.dart';
 import 'doctor_login.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -12,17 +13,17 @@ import 'package:flutter_icons/flutter_icons.dart';
 class DoctorSignup extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
 
-  // List<DoctorDb> doctors;
-  // DBHelper dbHelper = DBHelper();
+  List<DoctorDb> doctors;
+  DBHelper dbHelper = DBHelper();
 
-  // refreshDoctorList() async {
-  //   doctors = await dbHelper.getdoctor();
+  refreshDoctorList() async {
+    doctors = await dbHelper.getdoctor();
 
-  //   for (final doctor in doctors) {
-  //     print(doctor.id);
-  //     print(doctor.name);
-  //   }
-  // }
+    for (final doctor in doctors) {
+      print(doctor.id);
+      print(doctor.name);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -538,23 +539,44 @@ class DoctorSignup extends StatelessWidget {
                                                 color: Colors.white),
                                           ),
                                           onPressed: () async {
-                                            // if (!_formkey.currentState
-                                            //     .validate()) {
-                                            print('here on connect!');
+                                            if (!_formkey.currentState
+                                                .validate()) {
+                                              return;
+                                            } else {
+                                              _formkey.currentState.save();
+                                              print('here on connect!');
+                                              final resultVariable = true;
+                                              // await doctorRegisterData
+                                              //     .appConnect();
+                                              if (resultVariable) {
+                                                print('true');
 
-                                            // final resultVariable =
-                                            //     await doctorRegisterData
-                                            //         .appConnect();
-                                            // if (resultVariable) {
-                                            //   print('true');
-
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DoctorLogin()),
-                                            );
-                                          }),
+                                                final variable = await Provider
+                                                        .of<DoctorRegisterData>(
+                                                            context,
+                                                            listen: false)
+                                                    .registerUser();
+                                                if (variable) {
+                                                  //DATABASE
+                                                  final doctor = await dbHelper
+                                                      .add(DoctorDb(
+                                                          null,
+                                                          doctorRegisterData
+                                                              .docName));
+                                                  print(doctor.id);
+                                                  print(doctor.name);
+                                                  refreshDoctorList();
+                                                  Navigator.of(context)
+                                                      .push(MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DoctorLogin(),
+                                                  ));
+                                                }
+                                              }
+                                            }
+                                          }
+                                          //print(doctors);
+                                          ),
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(

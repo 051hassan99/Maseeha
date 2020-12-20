@@ -15,9 +15,6 @@ import 'Doctor/loginDoctorData.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fyp/Patient/newAppointmentdata.dart';
 
-//abcs
-//mmm
-//all changes
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

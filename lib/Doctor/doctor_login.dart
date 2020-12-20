@@ -13,7 +13,7 @@ class DoctorLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /* createAlertDialog(BuildContext context) {
+    createAlertDialog(BuildContext context) {
       return showDialog(
           context: context,
           builder: (context) {
@@ -34,16 +34,16 @@ class DoctorLogin extends StatelessWidget {
               ),
             );
           });
-    }  */
+    }
 
     final loginDoctorData =
         Provider.of<LoginDoctorData>(context, listen: false);
     Size size = MediaQuery.of(context).size;
     return WillPopScope(
-       onWillPop: (){
-              return new Future (() => false);
-          },
-          child: SafeArea(
+      onWillPop: () {
+        return new Future(() => false);
+      },
+      child: SafeArea(
         child: Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
           body: Column(
@@ -152,7 +152,8 @@ class DoctorLogin extends StatelessWidget {
                                           border: InputBorder.none,
                                           contentPadding: EdgeInsets.all(10),
                                         ),
-                                        keyboardType: TextInputType.emailAddress,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                         validator: (String value) {
                                           if (value.isEmpty) {
                                             return DemoLocalization.of(context)
@@ -210,7 +211,8 @@ class DoctorLogin extends StatelessWidget {
                                                       context)
                                                   .getTranslatedValue('epass'),
                                               border: InputBorder.none,
-                                              contentPadding: EdgeInsets.all(10),
+                                              contentPadding:
+                                                  EdgeInsets.all(10),
                                               suffixIcon: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye,
@@ -232,7 +234,8 @@ class DoctorLogin extends StatelessWidget {
                                               return null;
                                             },
                                             onChanged: (value) {
-                                              loginDoctorData.docPassword = value;
+                                              loginDoctorData.docPassword =
+                                                  value;
                                             },
                                           );
                                         },
@@ -270,13 +273,28 @@ class DoctorLogin extends StatelessWidget {
                                                 fontSize: 18,
                                                 color: Colors.white),
                                           ),
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DoctorDashboard()),
-                                            );
+                                          onPressed: () async {
+                                            if (!_formkey.currentState
+                                                .validate()) {
+                                              return;
+                                            } else {
+                                              _formkey.currentState.save();
+
+                                              final check =
+                                                  await loginDoctorData
+                                                      .signUser();
+
+                                              if (check) {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          DoctorDashboard()),
+                                                );
+                                              } else {
+                                                createAlertDialog(context);
+                                              }
+                                            }
                                           }),
                                     ),
                                     Container(
@@ -294,7 +312,8 @@ class DoctorLogin extends StatelessWidget {
                                           highlightColor: Colors.transparent,
                                           child: Text(
                                             DemoLocalization.of(context)
-                                                .getTranslatedValue('newmember'),
+                                                .getTranslatedValue(
+                                                    'newmember'),
                                             style: GoogleFonts.rajdhani(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18,

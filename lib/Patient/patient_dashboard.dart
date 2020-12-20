@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/Patient/patient_custodian.dart';
 import 'package:fyp/Patient/scheduleAppointment.dart';
 import 'package:fyp/lang_selector.dart';
 import 'package:fyp/localization/demo_localization.dart';
@@ -135,7 +136,13 @@ class PatientDashboard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PatientCustodian()),
+                        );
+                      },
                     ),
                     context: context,
                   ),
