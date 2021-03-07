@@ -100,6 +100,7 @@ class _MyAppState extends State<MyApp> {
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          // hassabahmed
           primaryColor: bgcolor,
         ),
         home: Scaffold(
