@@ -10,11 +10,12 @@ import 'doctor_login.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+// ignore: must_be_immutable
 class DoctorSignup extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
 
   List<DoctorDb> doctors;
-  DBHelper dbHelper = DBHelper();
+  final DBHelper dbHelper = DBHelper();
 
   refreshDoctorList() async {
     doctors = await dbHelper.getdoctor();
@@ -246,7 +247,6 @@ class DoctorSignup extends StatelessWidget {
                                               .getTranslatedValue(
                                                   'EnterYourHospital'),
                                           border: InputBorder.none,
-                                          contentPadding: EdgeInsets.all(10),
                                         ),
                                         validator: (String value) {
                                           if (value.isEmpty) {
@@ -296,7 +296,6 @@ class DoctorSignup extends StatelessWidget {
                                               .getTranslatedValue(
                                                   'EnterYourPmdcNo'),
                                           border: InputBorder.none,
-                                          contentPadding: EdgeInsets.all(10),
                                         ),
                                         validator: (String value) {
                                           if (value.isEmpty) {
@@ -346,7 +345,6 @@ class DoctorSignup extends StatelessWidget {
                                               .getTranslatedValue(
                                                   'EnterYourSpecialization'),
                                           border: InputBorder.none,
-                                          contentPadding: EdgeInsets.all(10),
                                         ),
                                         validator: (String value) {
                                           if (value.isEmpty) {
@@ -399,8 +397,6 @@ class DoctorSignup extends StatelessWidget {
                                                       context)
                                                   .getTranslatedValue('epass'),
                                               border: InputBorder.none,
-                                              contentPadding:
-                                                  EdgeInsets.all(10),
                                               suffixIcon: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye,
@@ -467,8 +463,6 @@ class DoctorSignup extends StatelessWidget {
                                                       .getTranslatedValue(
                                                           'econfirmpass'),
                                               border: InputBorder.none,
-                                              contentPadding:
-                                                  EdgeInsets.all(10),
                                               suffixIcon: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye,
@@ -545,9 +539,9 @@ class DoctorSignup extends StatelessWidget {
                                             } else {
                                               _formkey.currentState.save();
                                               print('here on connect!');
-                                              final resultVariable = true;
-                                              // await doctorRegisterData
-                                              //     .appConnect();
+                                              final resultVariable =
+                                                  await doctorRegisterData
+                                                      .appConnect();
                                               if (resultVariable) {
                                                 print('true');
 

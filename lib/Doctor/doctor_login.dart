@@ -211,8 +211,10 @@ class DoctorLogin extends StatelessWidget {
                                                       context)
                                                   .getTranslatedValue('epass'),
                                               border: InputBorder.none,
-                                              contentPadding:
-                                                  EdgeInsets.all(10),
+                                               contentPadding:
+                                                  EdgeInsets.only(
+                                                    top: 14,
+                                                    left: 10),
                                               suffixIcon: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye,

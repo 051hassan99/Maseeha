@@ -350,8 +350,10 @@ class PatientSignUp extends StatelessWidget {
                                                         .getTranslatedValue(
                                                             'econfirmpass'),
                                                 border: InputBorder.none,
-                                                contentPadding:
-                                                    EdgeInsets.all(10),
+                                                 contentPadding:
+                                                  EdgeInsets.only(
+                                                    top: 14,
+                                                    left: 4),
                                                 suffixIcon: IconButton(
                                                   icon: Icon(
                                                     Icons.remove_red_eye,

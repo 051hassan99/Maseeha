@@ -204,7 +204,12 @@ class PatientLogin extends StatelessWidget {
                                           hintText: DemoLocalization.of(context)
                                               .getTranslatedValue('eemail'),
                                           border: InputBorder.none,
-                                          contentPadding: EdgeInsets.all(10),
+                                          contentPadding:
+                                                  EdgeInsets.only(
+                                                    
+                                                    left: 10)
+                                                    ,
+                                        
                                         ),
                                         keyboardType:
                                             TextInputType.emailAddress,
@@ -264,9 +269,13 @@ class PatientLogin extends StatelessWidget {
                                               hintText: DemoLocalization.of(
                                                       context)
                                                   .getTranslatedValue('epass'),
+                                                  
                                               border: InputBorder.none,
                                               contentPadding:
-                                                  EdgeInsets.all(10),
+                                                  EdgeInsets.only(
+                                                    top: 14,
+                                                    left: 10)
+                                                    ,
                                               suffixIcon: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye,

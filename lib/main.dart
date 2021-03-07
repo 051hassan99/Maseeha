@@ -11,6 +11,7 @@ import 'package:fyp/Doctor/doctorRegisterData.dart';
 import 'package:fyp/localization/demo_localization.dart';
 import 'package:fyp/splashScreen.dart';
 import 'package:provider/provider.dart';
+import 'DataHandler/AppData.dart';
 import 'Doctor/loginDoctorData.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fyp/Patient/newAppointmentdata.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var bgcolor = Color(0xFFFF5252);
+  var bgcolor = Colors.blue;
   Locale _locale;
 
   void setLocale(Locale locale) {
@@ -74,6 +75,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (context) => BMRContainerData(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AppData(),
         ),
       ],
       child: MaterialApp(

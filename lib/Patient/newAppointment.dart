@@ -10,7 +10,7 @@ class NewAppointment extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     final newApponitmentData =
         Provider.of<NewAppointmentData>(context, listen: false);
-       
+
     return ListView(
       children: [
         Container(

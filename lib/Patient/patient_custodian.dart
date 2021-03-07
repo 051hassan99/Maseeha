@@ -12,7 +12,7 @@ class PatientCustodian extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var _mainColor = Theme.of(context).primaryColor;
+  //  var _mainColor = Theme.of(context).primaryColor;
     return Scaffold(
         appBar: AppBar(
           title: Padding(

@@ -71,6 +71,8 @@
     "mass":"Enter Weight here",
     "SUP":"Spot Urine Protien",
     "SUC":"Spot Urine Create",
-    "patientcustodian":"Patient's Custodian"
+    "patientcustodian":"Patient's Custodian",
+    "appointmentselection":"You want an appointment from"
+
 
 }
